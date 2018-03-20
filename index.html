@@ -23,11 +23,12 @@
         </div>
     </div>
 
+    <!-- Materialize container with 70% width wraps main body content -->
     <div class="container">
 
         <!-- -- MAIN CONTENT -- This is the code for the main screen where API data is returned -->
-
         <div class="row main break-up">
+
             <!-- Video or Music Container -->
             <div class="col l4">
                 <div class="card grey darken-2 z-depth-5">
@@ -62,9 +63,15 @@
                         </ul>
                     </div>
                     <div class="card-content grey grey darken-3">
-                        <div id="recipe1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quia voluptatem, perferendis atque distinctio modi dolorem libero, eligendi sapiente non possimus ut repellendus architecto repellat incidunt quisquam unde suscipit asperiores.</div>
-                        <div id="recipe2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nam iusto ratione laborum, ipsam voluptatibus non deleniti distinctio! Voluptatum officiis soluta modi officia libero perspiciatis iure ratione doloribus facere sit?</div>
-                        <div id="recipe3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam dicta ipsum placeat eos, qui architecto porro maiores at voluptatem ea dignissimos nam inventore non possimus autem? Quas fuga sequi repellendus.</div>
+                        <div id="recipe1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quia voluptatem, perferendis atque
+                            distinctio modi dolorem libero, eligendi sapiente non possimus ut repellendus architecto repellat
+                            incidunt quisquam unde suscipit asperiores.</div>
+                        <div id="recipe2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nam iusto ratione laborum, ipsam
+                            voluptatibus non deleniti distinctio! Voluptatum officiis soluta modi officia libero perspiciatis
+                            iure ratione doloribus facere sit?</div>
+                        <div id="recipe3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam dicta ipsum placeat eos, qui
+                            architecto porro maiores at voluptatem ea dignissimos nam inventore non possimus autem? Quas
+                            fuga sequi repellendus.</div>
                     </div>
                 </div>
             </div>
@@ -89,14 +96,19 @@
                         </ul>
                     </div>
                     <div class="card-content grey darken-3">
-                        <div id="drinks1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo, voluptate at molestiae similique perspiciatis odit dolor hic? Iure temporibus odio recusandae culpa repudiandae id unde fugit omnis. Esse, quasi accusamus.</div>
-                        <div id="drinks2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, ex magnam earum delectus esse qui dicta odit nostrum id modi facilis iure, eius assumenda veritatis ut dolorum atque aperiam dolor!</div>
-                        <div id="drinks3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolorem similique ipsa, illo autem alias, inventore veniam iusto quae voluptatum velit esse eligendi commodi consectetur. Nemo sapiente maiores hic ex.</div>
+                        <div id="drinks1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo, voluptate at molestiae similique
+                            perspiciatis odit dolor hic? Iure temporibus odio recusandae culpa repudiandae id unde fugit
+                            omnis. Esse, quasi accusamus.</div>
+                        <div id="drinks2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, ex magnam earum delectus esse qui
+                            dicta odit nostrum id modi facilis iure, eius assumenda veritatis ut dolorum atque aperiam dolor!</div>
+                        <div id="drinks3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolorem similique ipsa, illo
+                            autem alias, inventore veniam iusto quae voluptatum velit esse eligendi commodi consectetur.
+                            Nemo sapiente maiores hic ex.</div>
                     </div>
                 </div>
             </div>
 
-            <!-- -- COMMENTS -- -->
+            <!-- -- COMMENTS -- This is where we'll push reviews for each of the different "occasions"-->
             <div class="col l12">
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
@@ -108,11 +120,11 @@
                         </div>
                         <button class="btn">ADD REVIEW</button>
                     </div>
-                    
+
                 </div>
             </div>
 
-            <!-- -- FIXED ACTION BUTTON -- This button triggers additional buttons that allow user to re-select occasion, food, and drink options -->
+            <!-- -- FIXED ACTION BUTTON -- This button triggers additional buttons that allow user to re-select occasion, food, and drink options. We'll probably want to trigger a modal with the input options for each -->
             <div class="fixed-action-btn">
                 <a href="#" class="btn-floating btn-large z-depth-5">
                     <i class="large material-icons">more_vert</i>
@@ -139,40 +151,37 @@
         </div>
 
 
-        <!-- -- WELCOME -- -- NEEDS WORK -- This is the code for the welcome modals that prompt user to either login, sign up, or use the app as a guest. -->
+        <!-- -- WELCOME -- -- NEEDS WORK IN JAVASCRIPT -- This is the code for the first welcome modal that prompt user to either login, sign up, or use the app as a guest. -->
 
-        <!-- <div class="welcome-card">
-            <h1 class="center-align">MOODIFY</h1>
-            <h4 class="center-align">Let's Set the Mood</h4>
-            <form action="" class="center-align">
-                <div class="input-field">
-                    <input id="user_name" type="text" class="validate">
-                    <label for="user_name">UserName</label>
-                </div>
-                <div class="input-field">
-                    <input id="user_password" type="text" class="validate">
-                    <label for="user_password">Password</label>
-                </div>
-                <button class="btn">LOG IN</button>
-            </form>
-            <div class="center-align">
+        <div id="modal1" class="modal modal-fixed-footer">
 
-                <br />
-                <a href="#">Sign Up</a>
-                <br />
-                <a href="#">Get Started as a Guest</a>
-            </div>
-        </div> -->
-
-        <!-- <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal-content">
-              <h4>Modal Header</h4>
-              <p>A bunch of text</p>
+                <h4>MOODIFY</h4>
+                <p>Let's Set the Mood</p>
+
+                <form action="" class="center-align">
+                    <div class="input-field">
+                        <input id="user_name" type="text" class="validate">
+                        <label for="user_name">UserName</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="user_password" type="text" class="validate">
+                        <label for="user_password">Password</label>
+                    </div>
+                    <button class="btn">LOG IN</button>
+                    <br />
+                    <a href="#">Sign Up</a>
+                    <br />
+                    <a href="#">Get Started as a Guest</a>
+                </form>
+
             </div>
+
             <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">DISMISS</a>
             </div>
-          </div> -->
+
+        </div>
 
     </div>
 
