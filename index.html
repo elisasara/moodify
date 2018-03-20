@@ -7,7 +7,7 @@
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet"type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import jQuery before materialize.js-->
@@ -17,9 +17,33 @@
     <script src="assets/script.js"></script>
     <title>Moodify</title>
 </head>
+
 <body>
     <div class="container">
-        <div id="modal1" class="modal modal-fixed-footer">
+
+        <div class="welcome-card">
+            <h1 class="center-align">MOODIFY</h1>
+            <h4 class="center-align">Let's Set the Mood</h4>
+            <form action="" class="center-align">
+                <div class="input-field">
+                    <input id="user_name" type="text" class="validate">
+                    <label for="user_name">UserName</label>
+                </div>
+                <div class="input-field">
+                    <input id="user_password" type="text" class="validate">
+                    <label for="user_password">Password</label>
+                </div>
+            </form>
+            <div class="center-align">
+
+                <br />
+                <a href="#">Sign Up</a>
+                <br />
+                <a href="#">Get Started as a Guest</a>
+            </div>
+
+        </div>
+        <!-- <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal-content">
               <h4>Modal Header</h4>
               <p>A bunch of text</p>
@@ -27,7 +51,8 @@
             <div class="modal-footer">
               <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
             </div>
-          </div>
+          </div> -->
     </div>
 </body>
+
 </html>
