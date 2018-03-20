@@ -1,22 +1,6 @@
 
 /* MAIN STYLES */
 
-body {
-    background: url(images/golden-glow.png);
-}
-
-form {
-    margin-top: 80px;
-}
-
-.absolute {
-    position: absolute;
-}
-
-.relative {
-    position: relative;
-}
-
 .btn {
     background-color: #910a30;
     margin-top: 20px;
@@ -31,12 +15,14 @@ a {
     color: #c4a9b1;
 }
 
+form {
+    margin-top: 80px;
+}
 .input-field input:focus + label {
     color: #910a30 !important;
     font-size: 1.2em !important;
   }
-  /* label underline focus color */
-  .input-field input:focus {
+.input-field input:focus {
     border-bottom: 1px solid #910a30!important;
     box-shadow: 0 1px 0 0 #910a30 !important
   }
@@ -60,5 +46,18 @@ a {
 }
 .welcome-card a:hover {
     text-decoration: underline;
+}
+
+/* MAIN */
+
+#header {
+    height: 200px;
+    background: url(images/storm.jpg)
+}
+
+.main {
+    width: 100%;
+    padding: 20px;
+    /* margin-top: 200px; */
 }
 
