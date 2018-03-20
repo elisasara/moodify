@@ -19,18 +19,34 @@ form {
 
 .btn {
     background-color: #910a30;
+    margin-top: 20px;
+    color: #c4a9b1;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    background-color: #640d26;
 }
 
 a {
     color: #c4a9b1;
 }
 
+.input-field input:focus + label {
+    color: #910a30 !important;
+    font-size: 1.2em !important;
+  }
+  /* label underline focus color */
+  .input-field input:focus {
+    border-bottom: 1px solid #910a30!important;
+    box-shadow: 0 1px 0 0 #910a30 !important
+  }
+
 /* WELCOME SCREEN 1 */
 
 .welcome-card {
     background: rgba(4,3,3,.8);
     padding: 60px;
-    margin-top: 100px; 
+    margin-top: 50px; 
 }
 .welcome-card h1 {
     color: #910a30;
