@@ -6,8 +6,23 @@
     margin-top: 20px;
     color: #c4a9b1;
 }
-
 .btn:hover, .btn:active, .btn:focus {
+    background-color: #640d26;
+}
+
+.btn-floating {
+    background-color: #910a30;
+}
+.btn-floating-1 {
+    background-color: #a51a41;
+}
+.btn-floating-2 {
+    background-color: #d32f5d;
+}
+.btn-floating-3 {
+    background-color: #f55683;
+}
+.btn-floating:hover, .btn-floating:active, .btn-floating:focus {
     background-color: #640d26;
 }
 
@@ -54,10 +69,23 @@ form {
     height: 200px;
     background: url(images/storm.jpg)
 }
-
+#header h1 {
+    margin: 4rem auto;
+    color: #f0e3e6;
+}
 .main {
     width: 100%;
     padding: 20px;
-    /* margin-top: 200px; */
+    margin-top: 100px;
 }
-
+.tabs .tab a {
+    color: #c4a9b1;
+}
+.tabs .tab a:hover, .tabs .tab a:active, .tabs .tab a:focus, .tabs .tab a.active {
+    color: #c48290;
+    
+}
+/* Getting overwritten by jquery?? */
+.tabs .tab a.active {
+    border-bottom: 1px solid #f17397 !important;
+}
