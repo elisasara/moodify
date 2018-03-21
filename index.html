@@ -34,7 +34,7 @@
                     <form action="" class="test-form">
                         <!-- OCCASION -->
                         <div class="question">
-                            <div class="input-fields">
+                            <div class="input-fields" id="playlistOptions">
                                 <select>
                                     <option value="" disabled selected>What's the Occasion?</option>
                                     <option value="1">Keeping it Casual</option>
@@ -49,11 +49,11 @@
                         <!-- FOOD -->
                         <div class="question">
                             <h4>Food Preferences</h4>
-                            <div class="input-field">
+                            <div class="input-field" id="mainIngredient">
                                 <input id="Food_Main_Ing" type="text" class="validate">
                                 <label for="Food_Main_Ing">Main Ingredient:</label>
                             </div>
-                            <div class="input-fields">
+                            <div class="input-fields" id="cuisine">
                                 <select>
                                     <option value="" disabled selected>What's your cuisine preference?</option>
                                     <option value="1">American</option>
@@ -64,7 +64,7 @@
                                     <option value="6">No Preference</option>
                                 </select>
                             </div>
-                            <div class="input-fields">
+                            <div class="input-fields" id="restrictions">
                                 <select>
                                     <option value="" disabled selected>Dietary Restrictions?</option>
                                     <option value="1">Paleo</option>
@@ -79,7 +79,7 @@
                             <button id="Food-Surprise" class="btn">Surprise Me</button>
                         </div>
                         <!-- DRINKS -->
-                        <div class="question">
+                        <div class="question" id="alcohol">
                             <h4>Drink Preferences</h4>
                             <p>
                                 <input type="checkbox" id="alcohol-yes" />
@@ -89,7 +89,7 @@
                                 <input type="checkbox" id="alcohol-no" />
                                 <label for="alcohol-no">Non-Alcoholic</label>
                             </p>
-                            <div class="input-field">
+                            <div class="input-field" id="drinkIngredient">
                                 <input id="Drink_Main_Ing" type="text" class="validate">
                                 <label for="Drink_Main_Ing">Type of Alcohol:</label>
                             </div>
