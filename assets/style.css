@@ -88,3 +88,14 @@ form {
 .tabs .tab a.active {
     border-bottom: 1px solid #f17397 !important;
 }
+
+/*  TEST FORM */
+.test-form {
+    padding: 60px;
+}
+.input-fields {
+    margin-top: 20px;
+}
+.question {
+    margin-bottom: 60px;
+}
