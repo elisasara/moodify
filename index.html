@@ -26,6 +26,80 @@
     <!-- Materialize container with 70% width wraps main body content -->
     <div class="container">
 
+        <!-- FORM FOR TESTING -->
+        <div class="row test-form-container">
+            <div class="col s12">
+                <div class="card grey darken-2 z-depth-5">
+                    <p class="red lighten-2 align-center">Form for testing API implementation - each section will move to triggered modals eventually</p>
+                    <form action="" class="test-form">
+                        <!-- OCCASION -->
+                        <div class="question">
+                            <div class="input-fields">
+                                <select>
+                                    <option value="" disabled selected>What's the Occasion?</option>
+                                    <option value="1">Keeping it Casual</option>
+                                    <option value="2">Need to Apologize</option>
+                                    <option value="3">Time to Break Up</option>
+                                    <option value="4">First Date</option>
+                                    <option value="5">Friend Zone</option>
+                                    <option value="6">Dinner with my Cat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- FOOD -->
+                        <div class="question">
+                            <h4>Food Preferences</h4>
+                            <div class="input-field">
+                                <input id="Food_Main_Ing" type="text" class="validate">
+                                <label for="Food_Main_Ing">Main Ingredient:</label>
+                            </div>
+                            <div class="input-fields">
+                                <select>
+                                    <option value="" disabled selected>What's your cuisine preference?</option>
+                                    <option value="1">American</option>
+                                    <option value="2">Tex Mex</option>
+                                    <option value="3">Asian</option>
+                                    <option value="4">Indian</option>
+                                    <option value="5">Middle Eastern</option>
+                                    <option value="6">No Preference</option>
+                                </select>
+                            </div>
+                            <div class="input-fields">
+                                <select>
+                                    <option value="" disabled selected>Dietary Restrictions?</option>
+                                    <option value="1">Paleo</option>
+                                    <option value="2">Gluten Free</option>
+                                    <option value="3">Vegetarian</option>
+                                    <option value="4">Vegan</option>
+                                    <option value="5">Nut Free</option>
+                                    <option value="6">None</option>
+                                    <!-- others?? -->
+                                </select>
+                            </div>
+                            <button id="Food-Surprise" class="btn">Surprise Me</button>
+                        </div>
+                        <!-- DRINKS -->
+                        <div class="question">
+                            <h4>Drink Preferences</h4>
+                            <p>
+                                <input type="checkbox" id="alcohol-yes" />
+                                <label for="alcohol-yes">Alcoholic</label>
+                            </p>
+                            <p>
+                                <input type="checkbox" id="alcohol-no" />
+                                <label for="alcohol-no">Non-Alcoholic</label>
+                            </p>
+                            <div class="input-field">
+                                <input id="Drink_Main_Ing" type="text" class="validate">
+                                <label for="Drink_Main_Ing">Type of Alcohol:</label>
+                            </div>
+                            <button id="Drink-Surprise" class="btn">Surprise Me</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- -- MAIN CONTENT -- This is the code for the main screen where API data is returned -->
         <div class="row main break-up">
 
