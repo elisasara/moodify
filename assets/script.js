@@ -1,3 +1,11 @@
+  // GLOBAL VARIABLES FOR INPUTS
+  var chosenPlaylist = "";
+  var mainIngredient = "";
+  var cuisine = "";
+  var foodRestrictons = "";
+  var alcohol = "";
+  var drinkIngredient = "";
+  
 $(document).ready(function () {
 
   // Initiallizes "Select" elements in forms
@@ -8,18 +16,11 @@ $(document).ready(function () {
   console.log("ready");
   // $('.modal').modal('open'); <-- COMMENTED OUT FOR NOW SO THAT THE REST OF JS CAN RUN
 
-  // GLOBAL VARIABLES FOR INPUTS
-  var chosenPlaylist = "";
-  var mainIngredient = "";
-  var cuisine = "";
-  var foodRestrictons = "";
-  var alcohol = "";
-  var drinkIngredient = "";
-
   // EVENT LISTENERS FOR ALL FORM INPUTS
   $("#playlistOptions").on("change", function () {
     chosenPlaylist = parseInt($(this).find(":selected").val());
     console.log(chosenPlaylist);
+    youtubeCall ();
   });
 
   $("#mainIngredient").on("change", function () {
@@ -62,7 +63,10 @@ $(document).ready(function () {
     console.log("Drink Surprise Clicked");
   })
 
+});
 
+
+function youtubeCall () {
   // YOUTUBE AJAX CALL
   var playlistURL = ["https://www.googleapis.com/youtube/v3/search?q=casual+playlist&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=apology+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=breakup+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=date+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=friend+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=lonely+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco"];
 
@@ -79,10 +83,6 @@ $(document).ready(function () {
     console.log(response);
   });
 
-
-
-});
-
-
+}
 
 
