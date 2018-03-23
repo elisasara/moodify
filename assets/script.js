@@ -1,10 +1,15 @@
-  // GLOBAL VARIABLES FOR INPUTS
-  var chosenPlaylist = "";
-  var mainIngredient = "";
-  var cuisine = "";
-  var foodRestrictons = "";
-  var alcohol = "";
-  var drinkIngredient = "";
+// GLOBAL VARIABLES FOR INPUTS
+var chosenPlaylist = "";
+var mainIngredient = "";
+var cuisine = "";
+var foodRestrictons = "";
+var alcohol = "";
+var drinkIngredient = "";
+
+// GLOBAL VARIABLES FOR PLAYLIST ARRAY
+var firstPlaylist = "";
+var secondPlaylist = "";
+var thirdPlaylist = "";
 
 $(document).ready(function () {
 
@@ -20,7 +25,7 @@ $(document).ready(function () {
   $("#playlistOptions").on("change", function () {
     chosenPlaylist = parseInt($(this).find(":selected").val());
     console.log(chosenPlaylist);
-    youtubeCall ();
+    youtubeCall();
   });
 
   $("#mainIngredient").on("change", function () {
@@ -66,15 +71,13 @@ $(document).ready(function () {
 });
 
 
-function youtubeCall () {
+function youtubeCall() {
   // YOUTUBE AJAX CALL
   var playlistURL = ["https://www.googleapis.com/youtube/v3/search?q=casual+playlist&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=apology+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=breakup+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=date+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=friend+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=lonely+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco"];
 
   // other cat option URL "https://www.googleapis.com/youtube/v3/search?q=cat+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco",
   // romantic URL "https://www.googleapis.com/youtube/v3/search?q=romantic+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco",
   // sexy URL "https://www.googleapis.com/youtube/v3/search?q=sexy+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco",
-
-
 
   $.ajax({
     url: playlistURL[chosenPlaylist],
@@ -83,108 +86,87 @@ function youtubeCall () {
     console.log(response);
     var youtubeResult = response.items
 
-
     // MATH TO CHOOSE RANDOM NUMBERS FOR WHICH INDEX WE ARE GOING TO USE
-    var playlist1 = Math.floor(Math.random() * youtubeResult.length + 1);
+    var playlist1 = Math.floor(Math.random() * youtubeResult.length);
     console.log(playlist1);
 
-    var playlist2 = Math.floor(Math.random() * youtubeResult.length + 1);
+    var playlist2 = Math.floor(Math.random() * youtubeResult.length);
     if (playlist1 === playlist2) {
-      playlist2 = Math.floor(Math.random() * youtubeResult.length + 1);
+      playlist2 = Math.floor(Math.random() * youtubeResult.length);
     }
     console.log(playlist2);
 
-    var playlist3 = Math.floor(Math.random() * youtubeResult.length + 1);
+    var playlist3 = Math.floor(Math.random() * youtubeResult.length);
     if (playlist1 === playlist3 || playlist2 === playlist3) {
-      playlist3 = Math.floor(Math.random() * youtubeResult.length + 1);
+      playlist3 = Math.floor(Math.random() * youtubeResult.length);
     }
     console.log(playlist3);
 
-    // VARIABLES FOR PLAYLIST TITLES
-    var pOneTitle = youtubeResult[playlist1].snippet.title;
-    console.log("Playlist 1: " + youtubeResult[playlist1].snippet.title);
+    // PUT ALL NECESSARY INFORMATION INTO ARRAY OF OBJECTS
+    var playlistArr = [
+      firstPlaylist = {
+        title: youtubeResult[playlist1].snippet.title,
+        id: youtubeResult[playlist1].id.playlistId,
+        description: youtubeResult[playlist1].snippet.description,
+        image: youtubeResult[playlist1].snippet.thumbnails.high.url
+      },
 
-    var pTwoTitle = youtubeResult[playlist2].snippet.title;
-    console.log("Playlist 2: " + youtubeResult[playlist2].snippet.title);
+      secondPlaylist = {
+        title: youtubeResult[playlist2].snippet.title,
+        id: youtubeResult[playlist2].id.playlistId,
+        description: youtubeResult[playlist2].snippet.description,
+        image: youtubeResult[playlist2].snippet.thumbnails.high.url
+      },
 
-    var pThreeTitle = youtubeResult[playlist3].snippet.title;
-    console.log("Playlist 3: " + youtubeResult[playlist3].snippet.title);
+      thirdPlaylist = {
+        title: youtubeResult[playlist3].snippet.title,
+        id: youtubeResult[playlist3].id.playlistId,
+        description: youtubeResult[playlist3].snippet.description,
+        image: youtubeResult[playlist3].snippet.thumbnails.high.url
+      }
+    ];
 
-    // VARIABLES FOR PLAYLIST ID
-    var pOneId = youtubeResult[playlist1].id.playlistId;
-    console.log("Playlist 1 ID: " + pOneId);
+    console.log(playlistArr);
 
-    var pTwoId = youtubeResult[playlist2].id.playlistId;
-    console.log("Playlist 2 ID: " + pTwoId);
+    //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
+    for (var i = 0; i < playlistArr.length; i++) {
+      var pTitle = $("<h4>");
+      var pDescription = $("<p>");
+      var pLink = $("<a>");
+      var pImage = $("<img>");
 
-    var pThreeId = youtubeResult[playlist3].id.playlistId;
-    console.log("Playlist 3 ID: " + pThreeId);
+      // LINKING AND CREATING THE TITLE ELEMENT
+      pTitle.html(playlistArr[i].title);
+      pLink.attr("href", "https://www.youtube.com/playlist?list=" + playlistArr[i].id);
+      pLink.attr("target", "blank");
+      pLink.html(pTitle);
 
-    // VARIABLES FOR PLAYLIST DESCRIPTION
-    // only pull this if a description exists for that item, otherwise it will cause an error
-    var pOneDescription = youtubeResult[playlist1].snippet.description;
-    console.log("Playlist 1 Description: " + pOneDescription);
+      // CREATING THE DESCRIPTION ELEMENT
+      pDescription.text(playlistArr[i].description);
+      pDescription.addClass("truncate");
 
-    var pTwoDescription = youtubeResult[playlist2].snippet.description;
-    console.log("Playlist 2 Description: " + pTwoDescription);
+      // CREATING THE IMAGE ELEMENT
+      pImage.attr("src", playlistArr[i].image);
+      pImage.addClass("responsive-img center-align");
 
-    var pThreeDescription = youtubeResult[playlist3].snippet.description;
-    console.log("Playlist 3 Description: " + pThreeDescription);
+      // ENSURING THAT THE CORRECT PLAYLIST GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
+      if (i === 0) {
+        $("#playlist1").append(pLink);
+        $("#playlist1").append(pDescription);
+        $("#playlist1").prepend(pImage);
+      }
+      else if (i === 1) {
+        $("#playlist2").append(pLink);
+        $("#playlist2").append(pDescription);
+        $("#playlist2").prepend(pImage);
+      }
+      else {
+        $("#playlist3").append(pLink);
+        $("#playlist3").append(pDescription);
+        $("#playlist3").prepend(pImage);
+      }
+    }
 
-    // VARIABLES FOR PLAYLIST PHOTO
-    var pOnePhoto = youtubeResult[playlist1].snippet.thumbnails.high.url;
-    console.log("Playlist 1 image: " + pOnePhoto);
-
-    var pTwoPhoto = youtubeResult[playlist2].snippet.thumbnails.high.url;
-    console.log("Playlist 2 image: " + pTwoPhoto);
-
-    var pThreePhoto = youtubeResult[playlist3].snippet.thumbnails.high.url;
-    console.log("Playlist 3 image: " + pThreePhoto);
-
-    // VARIABLES FOR DYNAMIC ELEMENTS NEEDED
-    var firstPlaylistTitle = $("<h4>");
-    var firstPlaylistDescription = $("<p>");
-    var firstPlaylistLink = $("<a>");
-    var firstPlaylistImage = $("<img>");
-
-    var secondPlaylistTitle = $("<h4>");
-    var secondPlaylistDescription = $("<p>");
-    var secondPlaylistLink = $("<a>");
-    var secondPlaylistImage = $("<img>");
-
-    var thirdPlaylistTitle = $("<h4>");
-    var thirdPlaylistDescription = $("<p>");
-    var thirdPlaylistLink = $("<a>");
-    var thirdPlaylistImage = $("<img>");
-
-    firstPlaylistTitle.html(pOneTitle);
-    firstPlaylistLink.attr("href", "https://www.youtube.com/playlist?list=" + pOneId);
-    firstPlaylistLink.attr("target", "blank");
-    firstPlaylistLink.html(firstPlaylistTitle);
-    $("#playlist1").append(firstPlaylistLink);
-
-    firstPlaylistDescription.text(pOneDescription);
-    firstPlaylistDescription.addClass("truncate");
-    $("#playlist1").append(firstPlaylistDescription);
-
-    firstPlaylistImage.attr("src", pOnePhoto);
-    firstPlaylistImage.addClass("responsive-img center-align");
-    $("#playlist1").prepend(firstPlaylistImage);
-
-
-    secondPlaylistTitle.html(pTwoTitle);
-    secondPlaylistLink.attr("href", "https://www.youtube.com/playlist?list=" + pTwoId);
-    secondPlaylistLink.attr("target", "blank");
-    secondPlaylistLink.html(secondPlaylistTitle);
-    $("#playlist2").append(secondPlaylistLink);
-
-    secondPlaylistDescription.text(pTwoDescription);
-    secondPlaylistDescription.addClass("truncate");
-    $("#playlist2").append(secondPlaylistDescription);
-
-    secondPlaylistImage.attr("src", pTwoPhoto);
-    secondPlaylistImage.attr("class", "responsive-img center-align");
-    $("#playlist2").prepend(secondPlaylistImage);
   });
 
 }
