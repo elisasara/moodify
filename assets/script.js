@@ -13,14 +13,15 @@ var thirdPlaylist = "";
 
 $(document).ready(function () {
 
-  // Initiallizes "Select" elements in forms
-  $(document).ready(function () {
+  // Initiallizes "Select" elements in forms and modal sequence
     $('select').material_select();
-  });
+    $('.modal').modal();
+    $('#modal-1').modal('open');
 
-  console.log("ready");
-  // $('.modal').modal('open'); <-- COMMENTED OUT FOR NOW SO THAT THE REST OF JS CAN RUN
+    // MODAL LOGIC:
+    // Modal-1 opens on document.ready() with input fields for user name, password, options for sign-up
 
+  
   // EVENT LISTENERS FOR ALL FORM INPUTS
   $("#playlistOptions").on("change", function () {
     chosenPlaylist = parseInt($(this).find(":selected").val());
