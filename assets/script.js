@@ -3,6 +3,7 @@ var chosenPlaylist = "";
 var mainIngredient = "";
 var cuisine = "";
 var allergies = "";
+var allergyArr = []
 var diet = "";
 var alcohol = "";
 var drinkIngredient = "";
@@ -54,7 +55,6 @@ $(document).ready(function () {
   // EVENT LISTENERS FOR ALL FORM INPUTS
   $("#playlistOptions").on("change", function () {
     chosenPlaylist = parseInt($(this).find(":selected").val());
-    console.log(chosenPlaylist);
     youtubeCall();
   });
 
@@ -68,9 +68,17 @@ $(document).ready(function () {
     console.log(cuisine);
   });
 
-  $("#restrictions").on("change", function () {
-    allergies = parseInt($(this).find(":selected").val());
+  $("#diet").on("change", function () {
+    diet = parseInt($(this).find(":selected").val());
+    console.log(diet);
+  })
+
+  $("#allergies").on("change", function () {
+    allergies = $(this).find(":selected").val();
     console.log(allergies);
+    allergyArr.push(allergies);
+    console.log(allergyArr);
+    // yummlyRecipeCall();
   })
 
   $("#Food-Surprise").on("click", function () {
@@ -113,24 +121,20 @@ function youtubeCall() {
     url: playlistURL[chosenPlaylist],
     method: "GET"
   }).then(function (response) {
-    console.log(response);
     var youtubeResult = response.items
 
     // MATH TO CHOOSE RANDOM NUMBERS FOR WHICH INDEX WE ARE GOING TO USE
     var playlist1 = Math.floor(Math.random() * youtubeResult.length);
-    console.log(playlist1);
 
     var playlist2 = Math.floor(Math.random() * youtubeResult.length);
     if (playlist1 === playlist2) {
       playlist2 = Math.floor(Math.random() * youtubeResult.length);
     }
-    console.log(playlist2);
 
     var playlist3 = Math.floor(Math.random() * youtubeResult.length);
     if (playlist1 === playlist3 || playlist2 === playlist3) {
       playlist3 = Math.floor(Math.random() * youtubeResult.length);
     }
-    console.log(playlist3);
 
     // PUT ALL NECESSARY INFORMATION INTO ARRAY OF OBJECTS
     var playlistArr = [
@@ -155,8 +159,6 @@ function youtubeCall() {
         image: youtubeResult[playlist3].snippet.thumbnails.high.url
       }
     ];
-
-    console.log(playlistArr);
 
     //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
     for (var i = 0; i < playlistArr.length; i++) {
@@ -202,9 +204,29 @@ function youtubeCall() {
 }
 
 // AJAX CALL FOR YUMMLY RECIPES
-var cuisineArr = ["cuisine^cuisine-american", "cuisine^cuisine-mexican", "cuisine^cuisine-asian", "cuisine^cuisine-indian", "cuisine^cuisine-mediterranean", "cuisine^cuisine-italian"];
-var allergyArr = ["393^Gluten-Free", "394^Peanut-Free", "395^Tree Nut-Free", "398^Seafood-Free", "396^Dairy-Free", "392^Wheat-Free"];
-var dietArr= ["387^Lacto-ovo vegetarian", "386^Vegan", "403^Paleo"];
+function yummlyRecipeCall (){
+var cuisineArr = ["cuisine^cuisine-american", "cuisine^cuisine-mexican", "cuisine^cuisine-asian", "cuisine^cuisine-indian", "cuisine^cuisine-mediterranean", "cuisine^cuisine-italian", ""];
+// var allergyArr = ["393^Gluten-Free", "394^Peanut-Free", "395^Tree Nut-Free", "398^Seafood-Free", "396^Dairy-Free", "392^Wheat-Free", ""];
+var dietArr= ["387^Lacto-ovo vegetarian", "386^Vegan", "403^Paleo", ""];
 
-var recipeURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + cuisineArr[diet] + "&allowedAllergy[]=" + cuisineArr[allergies];
+var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
+var noAllergyURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + dietArr[diet];
+if (allergyArr.length>0) {
+  var withAllergyURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + dietArr[diet] + "&allowedAllergy[]=" + allergyArr[allergies];
+  for (var i=0; i<allergyArr.length; i++){
+    // use .concat()
+  }
+}
+var withAllergyURL = 
+var corsRecipeURL = cors_anywhere_url + recipeURL;
+$.ajax({
+  url: corsRecipeURL,
+  method: "GET"
+}).then(function (response){
+  console.log(response);
+  
+  var results = response.matches
 
+
+})
+};
