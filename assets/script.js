@@ -1,3 +1,4 @@
+
 // GLOBAL VARIABLES FOR INPUTS
 var chosenPlaylist = "";
 var mainIngredient = "";
