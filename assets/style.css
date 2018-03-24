@@ -1,6 +1,11 @@
 
 /* MAIN STYLES */
 
+#logo1a {  
+    float: right;
+
+}
+
 .btn {
     background-color: #910a30;
     margin-top: 20px;
