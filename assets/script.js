@@ -29,9 +29,10 @@ $(document).ready(function () {
       $('#modal-2').modal('open');
     })
 
-    $("#modal-3-trigger").on("click", function() {
+    $(".modal-3-trigger").on("click", function() {
+      $('#modal-1').modal('close');
       $('#modal-2').modal('close');
-      $('#modal-3').modal('open');
+      $('#modal-3').modal('open')
     })
 
     $("#modal-4-trigger").on("click", function() {
@@ -46,6 +47,12 @@ $(document).ready(function () {
 
     $("#modal-5-close").on("click", function() {
       $('#modal-5').modal('close');
+
+      // TESTING SLIDER - not working right now
+      var instance = M.Carousel.init({
+        fullWidth: true,
+        indicators: true
+      });
     })
 
     

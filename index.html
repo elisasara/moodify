@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,8 +20,8 @@
     <div class="row">
         <div id="header" class="col s12 center-align">
             <h1 id="header-text">THE BREAK-UP</h1>
-            <img id="logo1a" src= "assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
-           
+            <img id="logo1a" src="assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
+
         </div>
     </div>
 
@@ -50,7 +50,7 @@
                     <br />
                     <a id="modal-2-trigger" href="#">Sign Up</a>
                     <br />
-                    <a href="#">Get Started as a Guest</a>
+                    <a class="modal-3-trigger" href="#">Get Started as a Guest</a>
                 </form>
             </div>
 
@@ -76,9 +76,9 @@
                         <input id="user_password_confirm" type="text" class="validate">
                         <label for="user_password_confirm">Confirm Password</label>
                     </div>
-                    <button id="modal-3-trigger" class="btn">SIGN UP</button>
+                    <button class="modal-3-trigger btn">SIGN UP</button>
                     <br />
-                    <a href="#">Nevermind, just get started as a guest.</a>
+                    <a class="modal-3-trigger" href="#">Nevermind, just get started as a guest.</a>
                 </form>
             </div>
 
@@ -194,84 +194,10 @@
             </div>
 
             <div class="modal-footer">
-                    <button id="modal-5-close" class="btn">SET THE MOOD</button>
+                <button id="modal-5-close" class="btn">SET THE MOOD</button>
             </div>
 
         </div>
-
-        <!-- FORM FOR TESTING -->
-        <!-- <div class="row test-form-container">
-            <div class="col s12">
-                <div class="card grey darken-2 z-depth-5">
-                    <p class="red lighten-2 align-center">Form for testing API implementation - each section will move to triggered modals eventually</p>
-                    <form action="" class="test-form"> -->
-        <!-- OCCASION -->
-        <!-- <div class="question">
-                            <div class="input-fields" id="playlistOptions">
-                                <select>
-                                    <option value="" disabled selected>What's the Occasion?</option>
-                                    <option value="0">Keeping it Casual</option>
-                                    <option value="1">Need to Apologize</option>
-                                    <option value="2">Time to Break Up</option>
-                                    <option value="3">First Date</option>
-                                    <option value="4">Friend Zone</option>
-                                    <option value="5">Dinner with my Cat</option>
-                                </select>
-                            </div>
-                        </div> -->
-        <!-- FOOD -->
-        <!-- <div class="question">
-                            <h4>Food Preferences</h4>
-                            <div class="input-field" id="mainIngredient">
-                                <input id="Food_Main_Ing" type="text" class="validate">
-                                <label for="Food_Main_Ing">Main Ingredient:</label>
-                            </div>
-                            <div class="input-fields" id="cuisine">
-                                <select>
-                                    <option value="" disabled selected>What's your cuisine preference?</option>
-                                    <option value="1">American</option>
-                                    <option value="2">Tex Mex</option>
-                                    <option value="3">Asian</option>
-                                    <option value="4">Indian</option>
-                                    <option value="5">Middle Eastern</option>
-                                    <option value="6">No Preference</option>
-                                </select>
-                            </div>
-                            <div class="input-fields" id="restrictions">
-                                <select>
-                                    <option value="" disabled selected>Dietary Restrictions?</option>
-                                    <option value="1">Paleo</option>
-                                    <option value="2">Gluten Free</option>
-                                    <option value="3">Vegetarian</option>
-                                    <option value="4">Vegan</option>
-                                    <option value="5">Nut Free</option>
-                                    <option value="6">None</option> -->
-        <!-- others?? -->
-        <!-- </select>
-                            </div>
-                            <button id="Food-Surprise" class="btn">Surprise Me</button>
-                        </div> -->
-        <!-- DRINKS -->
-        <!-- <div class="question" id="alcohol">
-                            <h4>Drink Preferences</h4>
-                            <p>
-                                <input type="checkbox" id="alcohol-yes" />
-                                <label for="alcohol-yes">Alcoholic</label>
-                            </p>
-                            <p>
-                                <input type="checkbox" id="alcohol-no" />
-                                <label for="alcohol-no">Non-Alcoholic</label>
-                            </p>
-                            <div class="input-field" id="drinkIngredient">
-                                <input id="Drink_Main_Ing" type="text" class="validate">
-                                <label for="Drink_Main_Ing">Type of Alcohol:</label>
-                            </div>
-                            <button id="Drink-Surprise" class="btn">Surprise Me</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
 
         <!-- -- MAIN CONTENT -- This is the code for the main screen where API data is returned -->
         <div class="row main break-up">
@@ -283,7 +209,31 @@
                         <h4>YOUR PLAYLISTS</h4>
                     </div>
 
-                    <div class="card-tabs">
+                    <!-- TESTING SLIDER - not working right now -->
+                    <div class="carousel carousel-slider center">
+                        <div class="carousel-fixed-item center">
+                            <a class="btn waves-effect white grey-text darken-text-2">button</a>
+                        </div>
+                        <div class="carousel-item red white-text" href="#one!">
+                            <h2>First Panel</h2>
+                            <p class="white-text">This is your first panel</p>
+                        </div>
+                        <div class="carousel-item amber white-text" href="#two!">
+                            <h2>Second Panel</h2>
+                            <p class="white-text">This is your second panel</p>
+                        </div>
+                        <div class="carousel-item green white-text" href="#three!">
+                            <h2>Third Panel</h2>
+                            <p class="white-text">This is your third panel</p>
+                        </div>
+                        <div class="carousel-item blue white-text" href="#four!">
+                            <h2>Fourth Panel</h2>
+                            <p class="white-text">This is your fourth panel</p>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDER -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
                                 <a href="#playlist1">RECIPE 1</a>
@@ -296,7 +246,8 @@
                             </li>
                         </ul>
 
-                    </div>
+                    </div> -->
+
                     <div class="card-content grey grey darken-3">
                         <div id="playlist1"></div>
                         <div id="playlist2"></div>
