@@ -15,11 +15,39 @@ $(document).ready(function () {
 
   // Initiallizes "Select" elements in forms and modal sequence
     $('select').material_select();
-    $('.modal').modal();
-    $('#modal-1').modal('open');
 
     // MODAL LOGIC:
     // Modal-1 opens on document.ready() with input fields for user name, password, options for sign-up
+    // When user clicks "sign up" Modal-2 gets triggered
+
+    $('.modal').modal();
+    $('#modal-1').modal('open');
+
+    $("#modal-2-trigger").on("click", function() {
+      $('#modal-1').modal('close');
+      $('#modal-2').modal('open');
+    })
+
+    $("#modal-3-trigger").on("click", function() {
+      $('#modal-2').modal('close');
+      $('#modal-3').modal('open');
+    })
+
+    $("#modal-4-trigger").on("click", function() {
+      $('#modal-3').modal('close');
+      $('#modal-4').modal('open');
+    })
+
+    $("#modal-5-trigger").on("click", function() {
+      $('#modal-4').modal('close');
+      $('#modal-5').modal('open');
+    })
+
+    $("#modal-5-close").on("click", function() {
+      $('#modal-5').modal('close');
+    })
+
+    
 
   
   // EVENT LISTENERS FOR ALL FORM INPUTS
