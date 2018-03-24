@@ -210,7 +210,7 @@ var cuisineArr = ["cuisine^cuisine-american", "cuisine^cuisine-mexican", "cuisin
 var dietArr= ["387^Lacto-ovo vegetarian", "386^Vegan", "403^Paleo", ""];
 
 var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
-var noAllergyURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + dietArr[diet];
+var recipeURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + dietArr[diet];
 if (allergyArr.length>0) {
   var withAllergyURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + dietArr[diet] + "&allowedAllergy[]=" + allergyArr[allergies];
   for (var i=0; i<allergyArr.length; i++){
