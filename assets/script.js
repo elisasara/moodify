@@ -2,7 +2,8 @@
 var chosenPlaylist = "";
 var mainIngredient = "";
 var cuisine = "";
-var foodRestrictons = "";
+var allergies = "";
+var diet = "";
 var alcohol = "";
 var drinkIngredient = "";
 
@@ -68,8 +69,8 @@ $(document).ready(function () {
   });
 
   $("#restrictions").on("change", function () {
-    foodRestrictons = $(this).find(":selected").val();
-    console.log(foodRestrictons);
+    allergies = parseInt($(this).find(":selected").val());
+    console.log(allergies);
   })
 
   $("#Food-Surprise").on("click", function () {
@@ -200,4 +201,10 @@ function youtubeCall() {
 
 }
 
+// AJAX CALL FOR YUMMLY RECIPES
+var cuisineArr = ["cuisine^cuisine-american", "cuisine^cuisine-mexican", "cuisine^cuisine-asian", "cuisine^cuisine-indian", "cuisine^cuisine-mediterranean", "cuisine^cuisine-italian"];
+var allergyArr = ["393^Gluten-Free", "394^Peanut-Free", "395^Tree Nut-Free", "398^Seafood-Free", "396^Dairy-Free", "392^Wheat-Free"];
+var dietArr= ["387^Lacto-ovo vegetarian", "386^Vegan", "403^Paleo"];
+
+var recipeURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + mainIngredient + "&allowedCuisine[]=" + cuisineArr[cuisine] + "&allowedDiet[]=" + cuisineArr[diet] + "&allowedAllergy[]=" + cuisineArr[allergies];
 
