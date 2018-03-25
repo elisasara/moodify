@@ -110,7 +110,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="modal-4-trigger" class="btn">Next</button>
+                <button class="btn modal-4-trigger">Next</button>
             </div>
 
         </div>
@@ -160,7 +160,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="modal-5-trigger" class="btn">Next</button>
+                <button class="btn modal-5-trigger">Next</button>
             </div>
 
         </div>
@@ -204,31 +204,35 @@
 
             <!-- Video or Music Container -->
             <div class="col l4">
+
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
                         <h4>YOUR PLAYLISTS</h4>
                     </div>
 
-                    <!-- TESTING SLIDER - not working right now -->
-                    <div class="carousel carousel-slider center">
-                        <div class="carousel-fixed-item center">
-                            <a class="btn waves-effect white grey-text darken-text-2">button</a>
-                        </div>
-                        <div class="carousel-item red white-text" href="#one!">
-                            <h2>First Panel</h2>
-                            <p class="white-text">This is your first panel</p>
-                        </div>
-                        <div class="carousel-item amber white-text" href="#two!">
-                            <h2>Second Panel</h2>
-                            <p class="white-text">This is your second panel</p>
-                        </div>
-                        <div class="carousel-item green white-text" href="#three!">
-                            <h2>Third Panel</h2>
-                            <p class="white-text">This is your third panel</p>
-                        </div>
-                        <div class="carousel-item blue white-text" href="#four!">
-                            <h2>Fourth Panel</h2>
-                            <p class="white-text">This is your fourth panel</p>
+                    <!-- SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="playlist1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="playlist2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="playlist3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -245,14 +249,13 @@
                                 <a href="#playlist3">RECIPE 3</a>
                             </li>
                         </ul>
-
-                    </div> -->
-
+                    </div>
                     <div class="card-content grey grey darken-3">
                         <div id="playlist1"></div>
                         <div id="playlist2"></div>
                         <div id="playlist3"></div>
-                    </div>
+                    </div> -->
+
                 </div>
             </div>
 
@@ -344,18 +347,18 @@
                     <i class="large material-icons">more_vert</i>
                 </a>
                 <ul>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-1 btn-large z-depth-5">
+                    <li class="modal-3-trigger">
+                        <a href="#modal-3" class="btn-floating btn-floating-1 btn-large z-depth-5">
                             <i class="large material-icons">mood</i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-2 btn-large z-depth-5">
+                    <li class="modal-4-trigger">
+                        <a href="#modal-4" class="btn-floating btn-floating-2 btn-large z-depth-5">
                             <i class="large material-icons">local_dining</i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-3 btn-large z-depth-5">
+                    <li class="modal-5-trigger">
+                        <a href="#modal-5" class="btn-floating btn-floating-3 btn-large z-depth-5">
                             <i class="large material-icons">local_bar</i>
                         </a>
                     </li>
