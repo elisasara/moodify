@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -21,8 +21,8 @@
     <div class="row">
         <div id="header" class="col s12 center-align">
             <h1 id="header-text">THE BREAK-UP</h1>
-            <img id="logo1a" src= "assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
-           
+            <img id="logo1a" src="assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
+
         </div>
     </div>
 
@@ -51,7 +51,7 @@
                     <br />
                     <a id="modal-2-trigger" href="#">Sign Up</a>
                     <br />
-                    <a href="#">Get Started as a Guest</a>
+                    <a class="modal-3-trigger" href="#">Get Started as a Guest</a>
                 </form>
             </div>
 
@@ -77,9 +77,9 @@
                         <input id="user_password_confirm" type="text" class="validate">
                         <label for="user_password_confirm">Confirm Password</label>
                     </div>
-                    <button id="modal-3-trigger" class="btn">SIGN UP</button>
+                    <button class="modal-3-trigger btn">SIGN UP</button>
                     <br />
-                    <a href="#">Nevermind, just get started as a guest.</a>
+                    <a class="modal-3-trigger" href="#">Nevermind, just get started as a guest.</a>
                 </form>
             </div>
 
@@ -111,7 +111,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="modal-4-trigger" class="btn">Next</button>
+                <button class="btn modal-4-trigger">Next</button>
             </div>
 
         </div>
@@ -179,7 +179,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="modal-5-trigger" class="btn">Next</button>
+                <button class="btn modal-5-trigger">Next</button>
             </div>
 
         </div>
@@ -213,7 +213,7 @@
             </div>
 
             <div class="modal-footer">
-                    <button id="modal-5-close" class="btn">SET THE MOOD</button>
+                <button id="modal-5-close" class="btn">SET THE MOOD</button>
             </div>
 
         </div>
@@ -223,12 +223,40 @@
 
             <!-- Video or Music Container -->
             <div class="col l4">
+
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
                         <h4>YOUR PLAYLISTS</h4>
                     </div>
 
-                    <div class="card-tabs">
+                    <!-- SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="playlist1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="playlist2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="playlist3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDER -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
                                 <a href="#playlist1">PLAYLIST 1</a>
@@ -240,13 +268,13 @@
                                 <a href="#playlist3">PLAYLIST 3</a>
                             </li>
                         </ul>
-
                     </div>
                     <div class="card-content grey grey darken-3">
                         <div id="playlist1"></div>
                         <div id="playlist2"></div>
                         <div id="playlist3"></div>
-                    </div>
+                    </div> -->
+
                 </div>
             </div>
 
@@ -326,18 +354,18 @@
                     <i class="large material-icons">more_vert</i>
                 </a>
                 <ul>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-1 btn-large z-depth-5">
+                    <li class="modal-3-trigger">
+                        <a href="#modal-3" class="btn-floating btn-floating-1 btn-large z-depth-5">
                             <i class="large material-icons">mood</i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-2 btn-large z-depth-5">
+                    <li class="modal-4-trigger">
+                        <a href="#modal-4" class="btn-floating btn-floating-2 btn-large z-depth-5">
                             <i class="large material-icons">local_dining</i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-3 btn-large z-depth-5">
+                    <li class="modal-5-trigger">
+                        <a href="#modal-5" class="btn-floating btn-floating-3 btn-large z-depth-5">
                             <i class="large material-icons">local_bar</i>
                         </a>
                     </li>

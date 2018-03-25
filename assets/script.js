@@ -35,25 +35,32 @@ $(document).ready(function () {
     $('#modal-2').modal('open');
   })
 
-  $("#modal-3-trigger").on("click", function () {
-    $('#modal-2').modal('close');
-    $('#modal-3').modal('open');
-  })
+    $(".modal-3-trigger").on("click", function() {
+      $('#modal-1').modal('close');
+      $('#modal-2').modal('close');
+      $('#modal-3').modal('open')
+    })
 
-  $("#modal-4-trigger").on("click", function () {
-    $('#modal-3').modal('close');
-    $('#modal-4').modal('open');
-  })
+    $(".modal-4-trigger").on("click", function() {
+      $('#modal-3').modal('close');
+      $('#modal-4').modal('open');
+    })
 
-  $("#modal-5-trigger").on("click", function () {
-    $('#modal-4').modal('close');
-    $('#modal-5').modal('open');
-  })
+    $(".modal-5-trigger").on("click", function() {
+      $('#modal-4').modal('close');
+      $('#modal-5').modal('open');
+    })
 
-  $("#modal-5-close").on("click", function () {
-    $('#modal-5').modal('close');
-  })
+    $("#modal-5-close").on("click", function() {
+      $('#modal-5').modal('close');
+    })
 
+      // TESTING SLIDERS
+      $('.slider').slider();
+      $('.slider').slider('pause');
+      $('.indicator-item').on('click',function(){
+        $('.slider').slider('pause');
+    });
 
 
 
@@ -213,19 +220,23 @@ function youtubeCall() {
       pImage.addClass("responsive-img center-align");
 
       // ENSURING THAT THE CORRECT PLAYLIST GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
+      // NG-Pushing playlist description and link to #playlist1-text, #playlist2-text, playlist3-text
       if (i === 0) {
-        $("#playlist1").append(pLink);
-        $("#playlist1").append(pDescription);
+        console.log("ng-test-working");
+        $("#playlist1-text").append(pLink);
+        $("#playlist1-text").append(pDescription);
         $("#playlist1").prepend(pImage);
       }
       else if (i === 1) {
-        $("#playlist2").append(pLink);
-        $("#playlist2").append(pDescription);
+        console.log("ng-test-working");
+        $("#playlist2-text").append(pLink);
+        $("#playlist2-text").append(pDescription);
         $("#playlist2").prepend(pImage);
       }
       else {
-        $("#playlist3").append(pLink);
-        $("#playlist3").append(pDescription);
+        console.log("ng-test-working");
+        $("#playlist3-text").append(pLink);
+        $("#playlist3-text").append(pDescription);
         $("#playlist3").prepend(pImage);
       }
     }
