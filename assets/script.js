@@ -59,8 +59,9 @@ $(document).ready(function () {
   
   // EVENT LISTENERS FOR ALL FORM INPUTS
   $("#playlistOptions").on("change", function () {
-    chosenPlaylist = parseInt($(this).find(":selected").val());
-    // youtubeCall();
+    chosenPlaylist = $(this).find(":selected").val();
+    // chosenPlaylist = parseInt($(this).find(":selected").val());
+    youtubeCall();
   });
 
   $("#mainIngredient").on("change", function () {
@@ -133,14 +134,15 @@ $(document).ready(function () {
 
 function youtubeCall() {
   // YOUTUBE AJAX CALL
-  var playlistURL = ["https://www.googleapis.com/youtube/v3/search?q=casual+playlist&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=apology+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=breakup+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=date+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=friend+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco", "https://www.googleapis.com/youtube/v3/search?q=lonely+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco"];
 
-  // other cat option URL "https://www.googleapis.com/youtube/v3/search?q=cat+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco",
-  // romantic URL "https://www.googleapis.com/youtube/v3/search?q=romantic+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco",
-  // sexy URL "https://www.googleapis.com/youtube/v3/search?q=sexy+songs&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco",
+  // other cat option: cat+songs
+  // romantic: romantic+songs
+  // sexy: sexy+songs
+
+  var playlistURL = "https://www.googleapis.com/youtube/v3/search?q=" + chosenPlaylist + "&maxResults=50&part=snippet&type=playlist&key=AIzaSyB4XTor6ysUMwFdHrCjxMsfe5Ly6dZ5Oco"
 
   $.ajax({
-    url: playlistURL[chosenPlaylist],
+    url: playlistURL,
     method: "GET"
   }).then(function (response) {
     var youtubeResult = response.items
