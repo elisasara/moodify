@@ -35,16 +35,6 @@ $(document).ready(function () {
     $('#modal-2').modal('open');
   })
 
-  $("#modal-3-trigger").on("click", function () {
-    $('#modal-2').modal('close');
-    $('#modal-3').modal('open');
-  })
-
-  $("#modal-4-trigger").on("click", function () {
-    $('#modal-3').modal('close');
-    $('#modal-4').modal('open');
-  })
-
   $(".modal-3-trigger").on("click", function () {
     $('#modal-1').modal('close');
     $('#modal-2').modal('close');
@@ -63,7 +53,6 @@ $(document).ready(function () {
 
   $("#modal-5-close").on("click", function () {
     $('#modal-5').modal('close');
-
   })
 
   // SLIDERS
@@ -72,8 +61,6 @@ $(document).ready(function () {
   $('.indicator-item').on('click', function () {
     $('.slider').slider('pause');
   });
-
-
 
 
   // EVENT LISTENERS FOR ALL FORM INPUTS
