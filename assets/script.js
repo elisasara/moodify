@@ -45,46 +45,35 @@ $(document).ready(function () {
     $('#modal-4').modal('open');
   })
 
-<<<<<<< HEAD
-    $(".modal-3-trigger").on("click", function() {
-      $('#modal-1').modal('close');
-      $('#modal-2').modal('close');
-      $('#modal-3').modal('open')
-    })
+  $(".modal-3-trigger").on("click", function () {
+    $('#modal-1').modal('close');
+    $('#modal-2').modal('close');
+    $('#modal-3').modal('open')
+  })
 
-    $(".modal-4-trigger").on("click", function() {
-      $('#modal-3').modal('close');
-      $('#modal-4').modal('open');
-    })
+  $(".modal-4-trigger").on("click", function () {
+    $('#modal-3').modal('close');
+    $('#modal-4').modal('open');
+  })
 
-    $(".modal-5-trigger").on("click", function() {
-      $('#modal-4').modal('close');
-      $('#modal-5').modal('open');
-    })
-
-    $("#modal-5-close").on("click", function() {
-      $('#modal-5').modal('close');
-
-      // TESTING SLIDERS
-      $('.slider').slider();
-      $('.slider').slider('pause');
-      $('.indicator-item').on('click',function(){
-        $('.slider').slider('pause');
-    });
-
-    })
-=======
-  $("#modal-5-trigger").on("click", function () {
+  $(".modal-5-trigger").on("click", function () {
     $('#modal-4').modal('close');
     $('#modal-5').modal('open');
   })
 
   $("#modal-5-close").on("click", function () {
     $('#modal-5').modal('close');
+
   })
 
+  // SLIDERS
+  $('.slider').slider();
+  $('.slider').slider('pause');
+  $('.indicator-item').on('click', function () {
+    $('.slider').slider('pause');
+  });
 
->>>>>>> a4b2afd61cffa217e56c925ddd0c5510c134bcf1
+
 
 
   // EVENT LISTENERS FOR ALL FORM INPUTS
@@ -207,7 +196,7 @@ function youtubeCall() {
 
       secondPlaylist = {
         title: youtubeResult[playlist2].snippet.title,
-        link:  "https://www.youtube.com/playlist?list=" + youtubeResult[playlist2].id.playlistId,
+        link: "https://www.youtube.com/playlist?list=" + youtubeResult[playlist2].id.playlistId,
         description: youtubeResult[playlist2].snippet.description,
         image: youtubeResult[playlist2].snippet.thumbnails.high.url
       },
