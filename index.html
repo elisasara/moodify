@@ -9,6 +9,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="assets/script.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <title>Moodify</title>
 </head>
 
@@ -148,21 +149,28 @@
                                 <option value="1">Vegan</option>
                                 <option value="2">Paleo</option>
                                 <option value="3">None</option>
-                                <!-- others?? -->
                             </select>
                         </div>
-                        <div class="input-fields" id="allergies">
-                            <select>
-                                <option value="" disabled selected>Allergies?</option>
-                                <option value="393^Gluten-Free">Gluten</option>
-                                <option value="394^Peanut-Free">Peanuts</option>
-                                <option value="395^Tree Nut-Free">Tree Nuts</option>
-                                <option value="398^Seafood-Free">Seafood</option>
-                                <option value="396^Dairy-Free">Dairy</option>
-                                <option value="392^Wheat-Free">Wheat</option>
-                                <option value="">None</option>
-                                <!-- others?? -->
-                            </select>
+                        <div class="question" id="allergies">
+                                <p>Allergies?</p>
+                                
+                                <label for="393^Gluten-Free">Gluten</label>
+                                <input type="checkbox" id="393^Gluten-Free" />
+
+                                <label for="394^Peanut-Free">Peanuts</label>
+                                <input type="checkbox" id="394^Peanut-Free" />
+
+                                <label for="395^Tree Nut-Free">Tree Nuts</label>
+                                <input type="checkbox" id="395^Tree Nut-Free" />
+
+                                <label for="398^Seafood-Free">Seafood</label>
+                                <input type="checkbox" id="398^Seafood-Free" />
+
+                                <label for="396^Dairy-Free">Dairy</label>
+                                <input type="checkbox" id="396^Dairy-Free" />
+
+                                <label for="392^Wheat-Free">Wheat</label>
+                                <input type="checkbox" id="392^Wheat-Free" />
                         </div>
                         <button id="Food-Surprise" class="btn">Surprise Me</button>
                     </div>
@@ -209,80 +217,6 @@
             </div>
 
         </div>
-
-        <!-- FORM FOR TESTING -->
-        <!-- <div class="row test-form-container">
-            <div class="col s12">
-                <div class="card grey darken-2 z-depth-5">
-                    <p class="red lighten-2 align-center">Form for testing API implementation - each section will move to triggered modals eventually</p>
-                    <form action="" class="test-form"> -->
-        <!-- OCCASION -->
-        <!-- <div class="question">
-                            <div class="input-fields" id="playlistOptions">
-                                <select>
-                                    <option value="" disabled selected>What's the Occasion?</option>
-                                    <option value="0">Keeping it Casual</option>
-                                    <option value="1">Need to Apologize</option>
-                                    <option value="2">Time to Break Up</option>
-                                    <option value="3">First Date</option>
-                                    <option value="4">Friend Zone</option>
-                                    <option value="5">Dinner with my Cat</option>
-                                </select>
-                            </div>
-                        </div> -->
-        <!-- FOOD -->
-        <!-- <div class="question">
-                            <h4>Food Preferences</h4>
-                            <div class="input-field" id="mainIngredient">
-                                <input id="Food_Main_Ing" type="text" class="validate">
-                                <label for="Food_Main_Ing">Main Ingredient:</label>
-                            </div>
-                            <div class="input-fields" id="cuisine">
-                                <select>
-                                    <option value="" disabled selected>What's your cuisine preference?</option>
-                                    <option value="1">American</option>
-                                    <option value="2">Tex Mex</option>
-                                    <option value="3">Asian</option>
-                                    <option value="4">Indian</option>
-                                    <option value="5">Middle Eastern</option>
-                                    <option value="6">No Preference</option>
-                                </select>
-                            </div>
-                            <div class="input-fields" id="restrictions">
-                                <select>
-                                    <option value="" disabled selected>Dietary Restrictions?</option>
-                                    <option value="1">Paleo</option>
-                                    <option value="2">Gluten Free</option>
-                                    <option value="3">Vegetarian</option>
-                                    <option value="4">Vegan</option>
-                                    <option value="5">Nut Free</option>
-                                    <option value="6">None</option> -->
-        <!-- others?? -->
-        <!-- </select>
-                            </div>
-                            <button id="Food-Surprise" class="btn">Surprise Me</button>
-                        </div> -->
-        <!-- DRINKS -->
-        <!-- <div class="question" id="alcohol">
-                            <h4>Drink Preferences</h4>
-                            <p>
-                                <input type="checkbox" id="alcohol-yes" />
-                                <label for="alcohol-yes">Alcoholic</label>
-                            </p>
-                            <p>
-                                <input type="checkbox" id="alcohol-no" />
-                                <label for="alcohol-no">Non-Alcoholic</label>
-                            </p>
-                            <div class="input-field" id="drinkIngredient">
-                                <input id="Drink_Main_Ing" type="text" class="validate">
-                                <label for="Drink_Main_Ing">Type of Alcohol:</label>
-                            </div>
-                            <button id="Drink-Surprise" class="btn">Surprise Me</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
 
         <!-- -- MAIN CONTENT -- This is the code for the main screen where API data is returned -->
         <div class="row main break-up">
@@ -336,15 +270,9 @@
                         </ul>
                     </div>
                     <div class="card-content grey grey darken-3">
-                        <div id="recipe1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quia voluptatem, perferendis atque
-                            distinctio modi dolorem libero, eligendi sapiente non possimus ut repellendus architecto repellat
-                            incidunt quisquam unde suscipit asperiores.</div>
-                        <div id="recipe2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nam iusto ratione laborum, ipsam
-                            voluptatibus non deleniti distinctio! Voluptatum officiis soluta modi officia libero perspiciatis
-                            iure ratione doloribus facere sit?</div>
-                        <div id="recipe3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam dicta ipsum placeat eos, qui
-                            architecto porro maiores at voluptatem ea dignissimos nam inventore non possimus autem? Quas
-                            fuga sequi repellendus.</div>
+                        <div id="recipe1"></div>
+                        <div id="recipe2"></div>
+                        <div id="recipe3"></div>
                     </div>
                 </div>
             </div>
