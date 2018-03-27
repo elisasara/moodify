@@ -25,6 +25,8 @@ var thirdDrink = "";
 
 $(document).ready(function () {
 
+  // on page load, divs are hidden 
+
   // Initiallizes "Select" elements in forms and modal sequence
   $('select').material_select();
 
@@ -32,7 +34,11 @@ $(document).ready(function () {
   // Modal-1 opens on document.ready() with input fields for user name, password, options for sign-up
   // When user clicks "sign up" Modal-2 gets triggered
 
-  $('.modal').modal();
+  $('.modal').modal({
+    dismissible: false,
+    opacity: .2
+    
+  });
   $('#modal-1').modal('open');
 
   $("#modal-2-trigger").on("click", function () {
@@ -60,13 +66,12 @@ $(document).ready(function () {
     $('#modal-5').modal('close');
   })
 
-  // TESTING SLIDERS
+  // SLIDERS
   $('.slider').slider();
   $('.slider').slider('pause');
   $('.indicator-item').on('click', function () {
     $('.slider').slider('pause');
   });
-
 
 
   // EVENT LISTENERS FOR ALL FORM INPUTS
@@ -150,6 +155,9 @@ $(document).ready(function () {
 
   $("#modal-5-close").on("click", function () {
     event.preventDefault();
+    $(".main").removeClass("hide");
+    $("#header").removeClass("hide");
+    $("body").removeClass("load-background")
     youtubeCall();
     yummlyRecipeCall();
     yummlyDrinksCall();
@@ -217,7 +225,7 @@ function youtubeCall() {
 
     //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
     for (var i = 0; i < playlistArr.length; i++) {
-      var pTitle = $("<h4>");
+      var pTitle = $("<h3>");
       var pDescription = $("<p>");
       var pLink = $("<a>");
       var pImage = $("<img>");
@@ -239,19 +247,16 @@ function youtubeCall() {
       // ENSURING THAT THE CORRECT PLAYLIST GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
       // NG-Pushing playlist description and link to #playlist1-text, #playlist2-text, playlist3-text
       if (i === 0) {
-        console.log("ng-test-working");
         $("#playlist1-text").append(pLink);
         $("#playlist1-text").append(pDescription);
         $("#playlist1").prepend(pImage);
       }
       else if (i === 1) {
-        console.log("ng-test-working");
         $("#playlist2-text").append(pLink);
         $("#playlist2-text").append(pDescription);
         $("#playlist2").prepend(pImage);
       }
       else {
-        console.log("ng-test-working");
         $("#playlist3-text").append(pLink);
         $("#playlist3-text").append(pDescription);
         $("#playlist3").prepend(pImage);
@@ -370,7 +375,9 @@ function yummlyRecipeCall() {
       };
       console.log(secondRecipe);
 
+
       var recipeName = $("<h4>");
+
       var recipeTime = $("<p>");
       var recipeLink = $("<a>");
       var recipeImage = $("<img>");
@@ -434,6 +441,7 @@ function yummlyRecipeCall() {
       recipeImage.addClass("responsive-img");
       $("#recipe3").prepend(recipeImage);
     });
+
   })
 };
 
@@ -502,7 +510,9 @@ function yummlyDrinksCall() {
         ingredients: drink1Result.ingredientLines
       };
 
+
       var drinkName = $("<h4>");
+
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
 
@@ -518,6 +528,7 @@ function yummlyDrinksCall() {
       drinkImage.addClass("responsive-img");
       $("#drinks1").prepend(drinkImage);
 
+
       // CREATING THE INGREDIENTS LIST ELEMENT
       for (var i = 0; i < firstDrink.ingredients.length; i++) {
         var ingredientList = $("<ul>");
@@ -526,6 +537,7 @@ function yummlyDrinksCall() {
         ingredients.text(firstDrink.ingredients[i]);
         ingredientList.append(ingredients);
         $("#drinks1-text").append(ingredientList);
+
       }
     })
 

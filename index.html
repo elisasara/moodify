@@ -11,15 +11,16 @@
     <script src="assets/script.js"></script>
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <title>Moodify</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 </head>
 
 <!-- Body tag has a background color here - this can be changed with javascript depending on the "occasion" -->
 
-<body class="grey darken-4">
+<body class="grey darken-4 load-background">
 
     <!-- -- MAIN HEADER -- This is a full-width header section that can be changed with javascript depending on the "occasion" -->
     <div class="row">
-        <div id="header" class="col s12 center-align">
+        <div id="header" class="col s12 center-align hide">
             <h1 id="header-text">THE BREAK-UP</h1>
             <img id="logo1a" src="assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
 
@@ -35,8 +36,8 @@
         <div id="modal-1" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>MOODIFY</h4>
-                <p>Let's Set the Mood</p>
+                <h4 class="center-align">MOODIFY</h4>
+                <p class="center-align">Let's Set the Mood</p>
 
                 <form action="" class="center-align">
                     <div class="input-field">
@@ -90,13 +91,13 @@
         <div id="modal-3" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>Just a Few Questions:</h4>
+                <h4>What's the Occasion?</h4>
 
                 <form action="" class="center-align">
                     <div class="question">
                         <div class="input-fields" id="playlistOptions">
                             <select>
-                                <option value="" disabled selected>What's the Occasion?</option>
+                                <option value="" disabled selected>Select One</option>
                                 <option value="casual+playlist">Keeping it Casual</option>
                                 <option value="apology+songs">Need to Apologize</option>
                                 <option value="breakup+songs">Time to Break Up</option>
@@ -121,11 +122,10 @@
         <div id="modal-4" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>Almost done...</h4>
+                <h4>Food Preference</h4>
 
                 <form action="" class="center-align">
                     <div class="question">
-                        <h4>Food Preferences</h4>
                         <div class="input-field" id="mainIngredient">
                             <input id="Food_Main_Ing" type="text" class="validate">
                             <label for="Food_Main_Ing">Main Ingredient:</label>
@@ -144,33 +144,41 @@
                         </div>
                         <div class="input-fields" id="diet">
                             <select>
-                                    <option value="" disabled selected>Dietary Restrictions?</option>
-                                    <option value="387^Lacto-ovo vegetarian">Vegetarian</option>
-                                    <option value="386^Vegan">Vegan</option>
-                                    <option value="403^Paleo">Paleo</option>
-                                    <option value="">None</option>    
+                                <option value="" disabled selected>Dietary Restrictions?</option>
+                                <option value="387^Lacto-ovo vegetarian">Vegetarian</option>
+                                <option value="386^Vegan">Vegan</option>
+                                <option value="403^Paleo">Paleo</option>
+                                <option value="">None</option>
                             </select>
                         </div>
                         <div class="question" id="allergies">
-                                <p>Allergies?</p>
-                                
-                                <label for="393^Gluten-Free">Gluten</label>
+                            <p>Allergies?</p>
+
+                            <span class="check-push">
                                 <input type="checkbox" id="393^Gluten-Free" />
+                                <label for="393^Gluten-Free">Gluten</label>
+                            </span>
 
-                                <label for="394^Peanut-Free">Peanuts</label>
+                            <span class="check-push">
                                 <input type="checkbox" id="394^Peanut-Free" />
-
-                                <label for="395^Tree Nut-Free">Tree Nuts</label>
+                                <label for="394^Peanut-Free">Peanuts</label>
+                            </span>
+                            <span class="check-push">
                                 <input type="checkbox" id="395^Tree Nut-Free" />
-
-                                <label for="398^Seafood-Free">Seafood</label>
+                                <label for="395^Tree Nut-Free">Tree Nuts</label>
+                            </span>
+                            <span class="check-push">
                                 <input type="checkbox" id="398^Seafood-Free" />
-
-                                <label for="396^Dairy-Free">Dairy</label>
+                                <label for="398^Seafood-Free">Seafood</label>
+                            </span>
+                            <span class="check-push">
                                 <input type="checkbox" id="396^Dairy-Free" />
-
-                                <label for="392^Wheat-Free">Wheat</label>
+                                <label for="396^Dairy-Free">Dairy</label>
+                            </span>
+                            <span>
                                 <input type="checkbox" id="392^Wheat-Free" />
+                                <label for="392^Wheat-Free">Wheat</label>
+                            </span>
                         </div>
                         <button id="Food-Surprise" class="btn">Surprise Me</button>
                     </div>
@@ -189,11 +197,11 @@
         <div id="modal-5" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>Last step!</h4>
+                <h4>Drink Preferences</h4>
 
                 <form action="" class="center-align">
                     <div class="question" id="alcohol">
-                        <h4>Drink Preferences</h4>
+
                         <p>
                             <input type="radio" name="none" id="alcohol-yes" />
                             <label for="alcohol-yes">Alcoholic</label>
@@ -219,17 +227,17 @@
         </div>
 
         <!-- -- MAIN CONTENT -- This is the code for the main screen where API data is returned -->
-        <div class="row main break-up">
+        <div class="row main break-up hide">
 
             <!-- Video or Music Container -->
             <div class="col l4">
 
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
-                        <h4>YOUR PLAYLISTS</h4>
+                        <h4>PLAYLISTS</h4>
                     </div>
 
-                    <!-- SLIDER -->
+                    <!-- PLAYLIST SLIDER -->
                     <div class="card-content grey darken-3">
                         <div class="slider">
                             <ul class="slides">
@@ -282,9 +290,37 @@
             <div class="col l4">
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
-                        <h4>YOUR RECIPES</h4>
+                        <h4>RECIPES</h4>
                     </div>
-                    <div class="card-tabs">
+
+                    <!-- RECIPE SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="recipe1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="recipe1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="recipe2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="recipe2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="recipe3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="recipe3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDERS -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
                                 <a href="#recipe1">RECIPE 1</a>
@@ -301,7 +337,7 @@
                         <div id="recipe1"></div>
                         <div id="recipe2"></div>
                         <div id="recipe3"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -309,9 +345,37 @@
             <div class="col l4">
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
-                        <h4>YOUR DRINKS</h4>
+                        <h4>DRINKS</h4>
                     </div>
-                    <div class="card-tabs">
+
+                    <!-- DRINK SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="drinks1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="drinks1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="drinks2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="drinks2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="drinks3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="drinks3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDERS -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
                                 <a href="#drinks1">DRINKS 1</a>
@@ -328,7 +392,7 @@
                         <div id="drinks1"></div>
                         <div id="drinks2"></div>
                         <div id="drinks3"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
