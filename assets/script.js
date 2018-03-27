@@ -20,6 +20,8 @@ var thirdRecipe = "";
 
 $(document).ready(function () {
 
+  // on page load, divs are hidden 
+
   // Initiallizes "Select" elements in forms and modal sequence
   $('select').material_select();
 
@@ -27,7 +29,11 @@ $(document).ready(function () {
   // Modal-1 opens on document.ready() with input fields for user name, password, options for sign-up
   // When user clicks "sign up" Modal-2 gets triggered
 
-  $('.modal').modal();
+  $('.modal').modal({
+    dismissible: false,
+    opacity: .2
+    
+  });
   $('#modal-1').modal('open');
 
   $("#modal-2-trigger").on("click", function () {
@@ -132,6 +138,9 @@ $(document).ready(function () {
 
   $("#modal-5-close").on("click", function () {
     event.preventDefault();
+    $(".main").removeClass("hide");
+    $("#header").removeClass("hide");
+    $("body").removeClass("load-background")
     youtubeCall();
     yummlyRecipeCall();
     yummlyDrinksCall();
@@ -199,7 +208,7 @@ function youtubeCall() {
 
     //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
     for (var i = 0; i < playlistArr.length; i++) {
-      var pTitle = $("<h4>");
+      var pTitle = $("<h3>");
       var pDescription = $("<p>");
       var pLink = $("<a>");
       var pImage = $("<img>");
@@ -221,19 +230,16 @@ function youtubeCall() {
       // ENSURING THAT THE CORRECT PLAYLIST GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
       // NG-Pushing playlist description and link to #playlist1-text, #playlist2-text, playlist3-text
       if (i === 0) {
-        console.log("ng-test-working");
         $("#playlist1-text").append(pLink);
         $("#playlist1-text").append(pDescription);
         $("#playlist1").prepend(pImage);
       }
       else if (i === 1) {
-        console.log("ng-test-working");
         $("#playlist2-text").append(pLink);
         $("#playlist2-text").append(pDescription);
         $("#playlist2").prepend(pImage);
       }
       else {
-        console.log("ng-test-working");
         $("#playlist3-text").append(pLink);
         $("#playlist3-text").append(pDescription);
         $("#playlist3").prepend(pImage);
@@ -309,7 +315,7 @@ function yummlyRecipeCall() {
 
     //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
     for (var i = 0; i < recipeArr.length; i++) {
-      var recipeName = $("<h4>");
+      var recipeName = $("<h3>");
       var recipeTime = $("<p>");
       var recipeLink = $("<a>");
       var recipeImage = $("<img>");
@@ -330,19 +336,20 @@ function yummlyRecipeCall() {
       recipeImage.addClass("responsive-img left");
 
       // ENSURING THAT THE CORRECT RECIPE GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
+      // NG - moving text and link to div for slider
       if (i === 0) {
-        $("#recipe1").append(recipeLink);
-        $("#recipe1").append(recipeTime);
+        $("#recipe1-text").append(recipeLink);
+        $("#recipe1-text").append(recipeTime);
         $("#recipe1").prepend(recipeImage);
       }
       else if (i === 1) {
-        $("#recipe2").append(recipeLink);
-        $("#recipe2").append(recipeTime);
+        $("#recipe2-text").append(recipeLink);
+        $("#recipe2-text").append(recipeTime);
         $("#recipe2").prepend(recipeImage);
       }
       else {
-        $("#recipe3").append(recipeLink);
-        $("#recipe3").append(recipeTime);
+        $("#recipe3-text").append(recipeLink);
+        $("#recipe3-text").append(recipeTime);
         $("#recipe3").prepend(recipeImage);
       }
     }
@@ -416,7 +423,7 @@ function yummlyDrinksCall() {
 
     //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
     for (var i = 0; i < drinksArr.length; i++) {
-      var drinkName = $("<h4>");
+      var drinkName = $("<h3>");
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
 
@@ -432,17 +439,17 @@ function yummlyDrinksCall() {
 
       // ENSURING THAT THE CORRECT RECIPE GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
       if (i === 0) {
-        $("#drinks1").append(drinkLink);
+        $("#drinks1-text").append(drinkLink);
         // $("#drinks1").append(ingredientList);
         $("#drinks1").prepend(drinkImage);
       }
       else if (i === 1) {
-        $("#drinks2").append(drinkLink);
+        $("#drinks2-text").append(drinkLink);
         // $("#drinks2").append(ingredientList);
         $("#drinks2").prepend(drinkImage);
       }
       else {
-        $("#drinks3").append(drinkLink);
+        $("#drinks3-text").append(drinkLink);
         // $("#drinks3").append(ingredientList);
         $("#drinks3").prepend(drinkImage);
       }
