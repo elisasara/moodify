@@ -341,13 +341,13 @@ function yummlyRecipeCall() {
       recipeLink.attr("target", "blank");
       recipeLink.html(recipeName);
 
-      $("#recipe1").append(recipeLink);
+      $("#recipe1-text").append(recipeLink);
 
       // CREATING THE TIME ELEMENT
       var timeInMinutes = firstRecipe.time / 60;
       console.log(timeInMinutes);
       recipeTime.text("Prep time: " + timeInMinutes + " minutes");
-      $("#recipe1").append(recipeTime);
+      $("#recipe1-text").append(recipeTime);
 
       // // CREATING THE IMAGE ELEMENT
       recipeImage.attr("src", firstRecipe.image);
@@ -381,13 +381,13 @@ function yummlyRecipeCall() {
       recipeLink.attr("target", "blank");
       recipeLink.html(recipeName);
 
-      $("#recipe2").append(recipeLink);
+      $("#recipe2-text").append(recipeLink);
 
       // CREATING THE TIME ELEMENT
       var timeInMinutes = secondRecipe.time / 60;
       console.log(timeInMinutes);
       recipeTime.text("Prep time: " + timeInMinutes + " minutes");
-      $("#recipe2").append(recipeTime);
+      $("#recipe2-text").append(recipeTime);
 
       // // CREATING THE IMAGE ELEMENT
       recipeImage.attr("src", secondRecipe.image);
@@ -421,13 +421,13 @@ function yummlyRecipeCall() {
       recipeLink.attr("target", "blank");
       recipeLink.html(recipeName);
 
-      $("#recipe3").append(recipeLink);
+      $("#recipe3-text").append(recipeLink);
 
       // CREATING THE TIME ELEMENT
       var timeInMinutes = thirdRecipe.time / 60;
       console.log(timeInMinutes);
       recipeTime.text("Prep time: " + timeInMinutes + " minutes");
-      $("#recipe3").append(recipeTime);
+      $("#recipe3-text").append(recipeTime);
 
       // // CREATING THE IMAGE ELEMENT
       recipeImage.attr("src", thirdRecipe.image);
@@ -511,7 +511,7 @@ function yummlyDrinksCall() {
       drinkLink.attr("href", firstDrink.link);
       drinkLink.attr("target", "blank");
       drinkLink.html(drinkName);
-      $("#drinks1").append(drinkLink);
+      $("#drinks1-text").append(drinkLink);
 
       // CREATING THE IMAGE ELEMENT
       drinkImage.attr("src", firstDrink.image);
@@ -525,7 +525,7 @@ function yummlyDrinksCall() {
 
         ingredients.text(firstDrink.ingredients[i]);
         ingredientList.append(ingredients);
-        $("#drinks1").append(ingredientList);
+        $("#drinks1-text").append(ingredientList);
       }
     })
 
@@ -551,7 +551,7 @@ function yummlyDrinksCall() {
       drinkLink.attr("href", secondDrink.link);
       drinkLink.attr("target", "blank");
       drinkLink.html(drinkName);
-      $("#drinks2").append(drinkLink);
+      $("#drinks2-text").append(drinkLink);
 
       // CREATING THE IMAGE ELEMENT
       drinkImage.attr("src", secondDrink.image);
@@ -565,7 +565,7 @@ function yummlyDrinksCall() {
 
         ingredients.text(secondDrink.ingredients[i]);
         ingredientList.append(ingredients);
-        $("#drinks2").append(ingredientList);
+        $("#drinks2-text").append(ingredientList);
       }
     });
 
@@ -591,7 +591,7 @@ function yummlyDrinksCall() {
       drinkLink.attr("href", thirdDrink.link);
       drinkLink.attr("target", "blank");
       drinkLink.html(drinkName);
-      $("#drinks3").append(drinkLink);
+      $("#drinks3-text").append(drinkLink);
 
       // CREATING THE IMAGE ELEMENT
       drinkImage.attr("src", thirdDrink.image);
@@ -605,7 +605,7 @@ function yummlyDrinksCall() {
 
         ingredients.text(thirdDrink.ingredients[i]);
         ingredientList.append(ingredients);
-        $("#drinks3").append(ingredientList);
+        $("#drinks3-text").append(ingredientList);
       };
     })
   })
