@@ -113,11 +113,12 @@ $(document).ready(function () {
   $("#Food-Surprise").on("click", function () {
     event.preventDefault();
     var ingredientOptions = ["chicken", "steak", "beef", "fish", "seafood", "pasta", "pizza", "vegetables"];
-    var foodMath = Math.floor(Math.random() * ingredientOptions.length + 1);
+    var foodMath = Math.floor(Math.random() * ingredientOptions.length);
     console.log(foodMath);
     mainIngredient = ingredientOptions[foodMath];
     console.log(mainIngredient);
     console.log("Food Surprise Clicked");
+    // needs to go to next modal after this clicked!
   })
 
 
@@ -138,7 +139,13 @@ $(document).ready(function () {
 
   $("#Drink-Surprise").on("click", function () {
     event.preventDefault();
+    var drinkOptions = ["vodka", "gin", "tequila", "wine", "rum", "lemonade", "tea", "juice"];
+    var drinkMath = Math.floor(Math.random() * drinkOptions.length);
+    console.log(drinkMath);
+    drinkIngredient = drinkOptions[drinkMath];
+    console.log(drinkIngredient);
     console.log("Drink Surprise Clicked");
+    // needs to go to next modal after this clicked!
   })
 
   $("#modal-5-close").on("click", function () {
