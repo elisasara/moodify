@@ -18,6 +18,11 @@ var firstRecipe = "";
 var secondRecipe = "";
 var thirdRecipe = "";
 
+// GLOBAL VARIABLES FOR DRINK ARRAY
+var firstDrink = "";
+var secondDrink = "";
+var thirdDrink = "";
+
 $(document).ready(function () {
 
   // Initiallizes "Select" elements in forms and modal sequence
@@ -35,32 +40,32 @@ $(document).ready(function () {
     $('#modal-2').modal('open');
   })
 
-    $(".modal-3-trigger").on("click", function() {
-      $('#modal-1').modal('close');
-      $('#modal-2').modal('close');
-      $('#modal-3').modal('open')
-    })
+  $(".modal-3-trigger").on("click", function () {
+    $('#modal-1').modal('close');
+    $('#modal-2').modal('close');
+    $('#modal-3').modal('open')
+  })
 
-    $(".modal-4-trigger").on("click", function() {
-      $('#modal-3').modal('close');
-      $('#modal-4').modal('open');
-    })
+  $(".modal-4-trigger").on("click", function () {
+    $('#modal-3').modal('close');
+    $('#modal-4').modal('open');
+  })
 
-    $(".modal-5-trigger").on("click", function() {
-      $('#modal-4').modal('close');
-      $('#modal-5').modal('open');
-    })
+  $(".modal-5-trigger").on("click", function () {
+    $('#modal-4').modal('close');
+    $('#modal-5').modal('open');
+  })
 
-    $("#modal-5-close").on("click", function() {
-      $('#modal-5').modal('close');
-    })
+  $("#modal-5-close").on("click", function () {
+    $('#modal-5').modal('close');
+  })
 
-      // TESTING SLIDERS
-      $('.slider').slider();
-      $('.slider').slider('pause');
-      $('.indicator-item').on('click',function(){
-        $('.slider').slider('pause');
-    });
+  // TESTING SLIDERS
+  $('.slider').slider();
+  $('.slider').slider('pause');
+  $('.indicator-item').on('click', function () {
+    $('.slider').slider('pause');
+  });
 
 
 
@@ -107,6 +112,11 @@ $(document).ready(function () {
 
   $("#Food-Surprise").on("click", function () {
     event.preventDefault();
+    var ingredientOptions = ["chicken", "steak", "beef", "fish", "seafood", "pasta", "pizza", "vegetables"];
+    var foodMath = Math.floor(Math.random() * ingredientOptions.length + 1);
+    console.log(foodMath);
+    mainIngredient = ingredientOptions[foodMath];
+    console.log(mainIngredient);
     console.log("Food Surprise Clicked");
   })
 
@@ -184,7 +194,7 @@ function youtubeCall() {
 
       secondPlaylist = {
         title: youtubeResult[playlist2].snippet.title,
-        link:  "https://www.youtube.com/playlist?list=" + youtubeResult[playlist2].id.playlistId,
+        link: "https://www.youtube.com/playlist?list=" + youtubeResult[playlist2].id.playlistId,
         description: youtubeResult[playlist2].snippet.description,
         image: youtubeResult[playlist2].snippet.thumbnails.high.url
       },
@@ -258,10 +268,10 @@ function yummlyRecipeCall() {
       recipeURL.concat(allergyArr[i] = ",");
     }
   };
-  console.log(recipeURL);
 
   var corsRecipeURL = cors_anywhere_url + recipeURL;
 
+  // AJAX CALL TO GET RECIPES THAT FIT ALL CRITERIA
   $.ajax({
     url: corsRecipeURL,
     method: "GET"
@@ -285,68 +295,138 @@ function yummlyRecipeCall() {
       console.log(recipe3);
     }
 
-    // ARRAY WITH OBJECTS TO BE DISPLAYED IN CARDS WITH ALL NECESSARY INFORMATION
-    var recipeArr = [
-      firstRecipe = {
-        name: recipeResults[recipe1].recipeName,
-        link: "https://www.yummly.com/#recipe/" + recipeResults[recipe1].id,
-        image: recipeResults[recipe1].smallImageUrls[0],
-        time: recipeResults[recipe1].totalTimeInSeconds
-      },
-      secondRecipe = {
-        name: recipeResults[recipe2].recipeName,
-        link: "https://www.yummly.com/#recipe/" + recipeResults[recipe2].id,
-        image: recipeResults[recipe2].smallImageUrls[0],
-        time: recipeResults[recipe2].totalTimeInSeconds
-      },
-      thirdRecipe = {
-        name: recipeResults[recipe3].recipeName,
-        link: "https://www.yummly.com/#recipe/" + recipeResults[recipe3].id,
-        image: recipeResults[recipe3].smallImageUrls[0],
-        time: recipeResults[recipe3].totalTimeInSeconds
-      }
-    ];
-    console.log(recipeArr);
+    // GRAB THE RECIPE IDS FOR EACH ONE
+    var recipe1Id = recipeResults[recipe1].id;
+    console.log(recipe1Id);
+    var recipe2Id = recipeResults[recipe2].id;
+    console.log(recipe2Id);
+    var recipe3Id = recipeResults[recipe3].id;
+    console.log(recipe3Id);
 
-    //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
-    for (var i = 0; i < recipeArr.length; i++) {
+    // URLS FOR AJAX CALL FOR MORE INFO ON EACH RECIPE
+    var recipe1URL = "http://api.yummly.com/v1/api/recipe/" + recipe1Id + "?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab";
+    var recipe2URL = "http://api.yummly.com/v1/api/recipe/" + recipe2Id + "?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab";
+    var recipe3URL = "http://api.yummly.com/v1/api/recipe/" + recipe3Id + "?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab";
+
+    // RECIPE 1 AJAX CALL
+    $.ajax({
+      url: cors_anywhere_url + recipe1URL,
+      method: "GET"
+    }).then(function (response) {
+      var recipe1Result = response;
+      console.log(response);
+      firstRecipe = {
+        name: recipe1Result.name,
+        link: recipe1Result.attribution.url,
+        image: recipe1Result.images[0].hostedLargeUrl,
+        time: recipe1Result.totalTimeInSeconds
+      };
+      console.log(firstRecipe);
+
       var recipeName = $("<h4>");
       var recipeTime = $("<p>");
       var recipeLink = $("<a>");
       var recipeImage = $("<img>");
 
       // LINKING AND CREATING THE NAME ELEMENT
-      recipeName.html(recipeArr[i].name);
-      recipeLink.attr("href", recipeArr[i].link);
+      recipeName.html(firstRecipe.name);
+      recipeLink.attr("href", firstRecipe.link);
       recipeLink.attr("target", "blank");
       recipeLink.html(recipeName);
 
+      $("#recipe1").append(recipeLink);
+
       // CREATING THE TIME ELEMENT
-      var timeInMinutes = moment.utc(recipeArr[i].time * 1000).format("mm");
+      var timeInMinutes = firstRecipe.time / 60;
       console.log(timeInMinutes);
       recipeTime.text("Prep time: " + timeInMinutes + " minutes");
+      $("#recipe1").append(recipeTime);
 
-      // CREATING THE IMAGE ELEMENT
-      recipeImage.attr("src", recipeArr[i].image);
-      recipeImage.addClass("responsive-img left");
+      // // CREATING THE IMAGE ELEMENT
+      recipeImage.attr("src", firstRecipe.image);
+      recipeImage.addClass("responsive-img");
+      $("#recipe1").prepend(recipeImage);
+    });
 
-      // ENSURING THAT THE CORRECT RECIPE GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
-      if (i === 0) {
-        $("#recipe1").append(recipeLink);
-        $("#recipe1").append(recipeTime);
-        $("#recipe1").prepend(recipeImage);
-      }
-      else if (i === 1) {
-        $("#recipe2").append(recipeLink);
-        $("#recipe2").append(recipeTime);
-        $("#recipe2").prepend(recipeImage);
-      }
-      else {
-        $("#recipe3").append(recipeLink);
-        $("#recipe3").append(recipeTime);
-        $("#recipe3").prepend(recipeImage);
-      }
-    }
+    // RECIPE 2 AJAX CALL
+    $.ajax({
+      url: cors_anywhere_url + recipe2URL,
+      method: "GET"
+    }).then(function (response) {
+      var recipe2Result = response
+      console.log(response);
+      secondRecipe = {
+        name: recipe2Result.name,
+        link: recipe2Result.attribution.url,
+        image: recipe2Result.images[0].hostedLargeUrl,
+        time: recipe2Result.totalTimeInSeconds
+      };
+      console.log(secondRecipe);
+
+      var recipeName = $("<h4>");
+      var recipeTime = $("<p>");
+      var recipeLink = $("<a>");
+      var recipeImage = $("<img>");
+
+      // LINKING AND CREATING THE NAME ELEMENT
+      recipeName.html(secondRecipe.name);
+      recipeLink.attr("href", secondRecipe.link);
+      recipeLink.attr("target", "blank");
+      recipeLink.html(recipeName);
+
+      $("#recipe2").append(recipeLink);
+
+      // CREATING THE TIME ELEMENT
+      var timeInMinutes = secondRecipe.time / 60;
+      console.log(timeInMinutes);
+      recipeTime.text("Prep time: " + timeInMinutes + " minutes");
+      $("#recipe2").append(recipeTime);
+
+      // // CREATING THE IMAGE ELEMENT
+      recipeImage.attr("src", secondRecipe.image);
+      recipeImage.addClass("responsive-img");
+      $("#recipe2").prepend(recipeImage);
+    });
+
+    // RECIPE 3 AJAX CALL
+    $.ajax({
+      url: cors_anywhere_url + recipe3URL,
+      method: "GET"
+    }).then(function (response) {
+      var recipe3Result = response
+      console.log(response);
+      thirdRecipe = {
+        name: recipe3Result.name,
+        link: recipe3Result.attribution.url,
+        image: recipe3Result.images[0].hostedLargeUrl,
+        time: recipe3Result.totalTimeInSeconds
+      };
+      console.log(thirdRecipe);
+
+      var recipeName = $("<h4>");
+      var recipeTime = $("<p>");
+      var recipeLink = $("<a>");
+      var recipeImage = $("<img>");
+
+      // LINKING AND CREATING THE NAME ELEMENT
+      recipeName.html(thirdRecipe.name);
+      recipeLink.attr("href", thirdRecipe.link);
+      recipeLink.attr("target", "blank");
+      recipeLink.html(recipeName);
+
+      $("#recipe3").append(recipeLink);
+
+      // CREATING THE TIME ELEMENT
+      var timeInMinutes = thirdRecipe.time / 60;
+      console.log(timeInMinutes);
+      recipeTime.text("Prep time: " + timeInMinutes + " minutes");
+      $("#recipe3").append(recipeTime);
+
+      // // CREATING THE IMAGE ELEMENT
+      recipeImage.attr("src", thirdRecipe.image);
+      recipeImage.addClass("responsive-img");
+      $("#recipe3").prepend(recipeImage);
+    });
   })
 };
 
@@ -392,80 +472,135 @@ function yummlyDrinksCall() {
     }
     console.log(drink3);
 
-    // ARRAY WITH OBJECTS TO BE DISPLAYED IN CARDS WITH ALL NECESSARY INFORMATION
-    var drinksArr = [
-      firstDrink = {
-        name: drinkResults[drink1].recipeName,
-        link: "https://www.yummly.com/#recipe/" + drinkResults[drink1].id,
-        image: drinkResults[drink1].smallImageUrls[0],
-        ingredients: drinkResults[drink1].ingredients
-      },
-      secondDrink = {
-        name: drinkResults[drink2].recipeName,
-        link: "https://www.yummly.com/#recipe/" + drinkResults[drink2].id,
-        image: drinkResults[drink2].smallImageUrls[0],
-        ingredients: drinkResults[drink2].ingredients
-      },
-      thirdDrink = {
-        name: drinkResults[drink3].recipeName,
-        link: "https://www.yummly.com/#recipe/" + drinkResults[drink3].id,
-        image: drinkResults[drink3].smallImageUrls[0],
-        ingredients: drinkResults[drink3].ingredients
-      }
-    ];
-    console.log(drinksArr);
+    // GRAB THE DRINK IDS FOR EACH ONE
+    var drink1Id = drinkResults[drink1].id;
+    var drink2Id = drinkResults[drink2].id;
+    var drink3Id = drinkResults[drink3].id;
 
-    //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
-    for (var i = 0; i < drinksArr.length; i++) {
+    // URLS FOR AJAX CALL FOR MORE INFO ON EACH DRINK
+    var drink1URL = "http://api.yummly.com/v1/api/recipe/" + drink1Id + "?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab";
+    var drink2URL = "http://api.yummly.com/v1/api/recipe/" + drink2Id + "?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab";
+    var drink3URL = "http://api.yummly.com/v1/api/recipe/" + drink3Id + "?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab";
+
+    // DRINK 1 AJAX CALL
+    $.ajax({
+      url: cors_anywhere_url + drink1URL,
+      method: "GET"
+    }).then(function (response) {
+      var drink1Result = response;
+      firstDrink = {
+        name: drink1Result.name,
+        link: drink1Result.attribution.url,
+        image: drink1Result.images[0].hostedLargeUrl,
+        ingredients: drink1Result.ingredientLines
+      };
+
       var drinkName = $("<h4>");
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
 
       // LINKING AND CREATING THE NAME ELEMENT
-      drinkName.html(drinksArr[i].name);
-      drinkLink.attr("href", drinksArr[i].link);
+      drinkName.html(firstDrink.name);
+      drinkLink.attr("href", firstDrink.link);
       drinkLink.attr("target", "blank");
       drinkLink.html(drinkName);
+      $("#drinks1").append(drinkLink);
 
       // CREATING THE IMAGE ELEMENT
-      drinkImage.attr("src", drinksArr[i].image);
-      drinkImage.addClass("responsive-img left");
-
-      // ENSURING THAT THE CORRECT RECIPE GOES INTO THE CORRECT PART OF THE CARD IN THE HTML
-      if (i === 0) {
-        $("#drinks1").append(drinkLink);
-        // $("#drinks1").append(ingredientList);
-        $("#drinks1").prepend(drinkImage);
-      }
-      else if (i === 1) {
-        $("#drinks2").append(drinkLink);
-        // $("#drinks2").append(ingredientList);
-        $("#drinks2").prepend(drinkImage);
-      }
-      else {
-        $("#drinks3").append(drinkLink);
-        // $("#drinks3").append(ingredientList);
-        $("#drinks3").prepend(drinkImage);
-      }
+      drinkImage.attr("src", firstDrink.image);
+      drinkImage.addClass("responsive-img");
+      $("#drinks1").prepend(drinkImage);
 
       // CREATING THE INGREDIENTS LIST ELEMENT
-      for (var j = 0; j < drinksArr[i].ingredients.length; j++) {
+      for (var i = 0; i < firstDrink.ingredients.length; i++) {
         var ingredientList = $("<ul>");
         var ingredients = $("<li>");
 
-        ingredients.text(drinksArr[i].ingredients[j]);
+        ingredients.text(firstDrink.ingredients[i]);
         ingredientList.append(ingredients);
-        if (i === 0) {
-          $("#drinks1").append(ingredientList);
-        }
-        else if (i === 1) {
-          $("#drinks2").append(ingredientList);
-        }
-        else {
-          $("#drinks3").append(ingredientList);
-        }
+        $("#drinks1").append(ingredientList);
       }
-    }
+    })
+
+    // DRINK 2 AJAX CALL
+    $.ajax({
+      url: cors_anywhere_url + drink2URL,
+      method: "GET"
+    }).then(function (response) {
+      var drink2Result = response;
+      secondDrink = {
+        name: drink2Result.name,
+        link: drink2Result.attribution.url,
+        image: drink2Result.images[0].hostedLargeUrl,
+        ingredients: drink2Result.ingredientLines
+      };
+
+      var drinkName = $("<h4>");
+      var drinkLink = $("<a>");
+      var drinkImage = $("<img>");
+
+      // LINKING AND CREATING THE NAME ELEMENT
+      drinkName.html(secondDrink.name);
+      drinkLink.attr("href", secondDrink.link);
+      drinkLink.attr("target", "blank");
+      drinkLink.html(drinkName);
+      $("#drinks2").append(drinkLink);
+
+      // CREATING THE IMAGE ELEMENT
+      drinkImage.attr("src", secondDrink.image);
+      drinkImage.addClass("responsive-img");
+      $("#drinks2").prepend(drinkImage);
+
+      // CREATING THE INGREDIENTS LIST ELEMENT
+      for (var i = 0; i < secondDrink.ingredients.length; i++) {
+        var ingredientList = $("<ul>");
+        var ingredients = $("<li>");
+
+        ingredients.text(secondDrink.ingredients[i]);
+        ingredientList.append(ingredients);
+        $("#drinks2").append(ingredientList);
+      }
+    });
+
+    // DRINK 3 AJAX CALL
+    $.ajax({
+      url: cors_anywhere_url + drink3URL,
+      method: "GET"
+    }).then(function (response) {
+      var drink3Result = response;
+      thirdDrink = {
+        name: drink3Result.name,
+        link: drink3Result.attribution.url,
+        image: drink3Result.images[0].hostedLargeUrl,
+        ingredients: drink3Result.ingredientLines
+      };
+
+      var drinkName = $("<h4>");
+      var drinkLink = $("<a>");
+      var drinkImage = $("<img>");
+
+      // LINKING AND CREATING THE NAME ELEMENT
+      drinkName.html(thirdDrink.name);
+      drinkLink.attr("href", thirdDrink.link);
+      drinkLink.attr("target", "blank");
+      drinkLink.html(drinkName);
+      $("#drinks3").append(drinkLink);
+
+      // CREATING THE IMAGE ELEMENT
+      drinkImage.attr("src", thirdDrink.image);
+      drinkImage.addClass("responsive-img");
+      $("#drinks3").prepend(drinkImage);
+
+      // CREATING THE INGREDIENTS LIST ELEMENT
+      for (var i = 0; i < thirdDrink.ingredients.length; i++) {
+        var ingredientList = $("<ul>");
+        var ingredients = $("<li>");
+
+        ingredients.text(thirdDrink.ingredients[i]);
+        ingredientList.append(ingredients);
+        $("#drinks3").append(ingredientList);
+      };
+    })
   })
 };
 
