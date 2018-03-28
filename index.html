@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,21 +9,26 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="assets/script.js"></script>
+
     <script src="assets/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
+
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+
     <title>Moodify</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 </head>
 
 <!-- Body tag has a background color here - this can be changed with javascript depending on the "occasion" -->
 
-<body class="grey darken-4">
+<body class="grey darken-4 load-background">
 
     <!-- -- MAIN HEADER -- This is a full-width header section that can be changed with javascript depending on the "occasion" -->
     <div class="row">
-        <div id="header" class="col s12 center-align">
+        <div id="header" class="col s12 center-align hide">
             <h1 id="header-text">THE BREAK-UP</h1>
-            <img id="logo1a" src= "assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
-           
+            <img id="logo1a" src="assets/IMAGES/moodifylogo1a.png" alt="moodifylogo" height="80" width="80">
+
         </div>
     </div>
 
@@ -36,8 +41,8 @@
         <div id="modal-1" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>MOODIFY</h4>
-                <p>Let's Set the Mood</p>
+                <h4 class="center-align">MOODIFY</h4>
+                <p class="center-align">Let's Set the Mood</p>
 
                 <form action="" class="center-align">
                     <div class="input-field">
@@ -52,7 +57,7 @@
                     <br />
                     <a id="modal-2-trigger" href="#">Sign Up</a>
                     <br />
-                    <a href="#">Get Started as a Guest</a>
+                    <a class="modal-3-trigger" href="#">Get Started as a Guest</a>
                 </form>
             </div>
 
@@ -78,9 +83,9 @@
                         <input id="user_password_confirm" type="text" class="validate">
                         <label for="user_password_confirm">Confirm Password</label>
                     </div>
-                    <button id="modal-3-trigger" class="btn">SIGN UP</button>
+                    <button class="modal-3-trigger btn">SIGN UP</button>
                     <br />
-                    <a href="#">Nevermind, just get started as a guest.</a>
+                    <a class="modal-3-trigger" href="#">Nevermind, just get started as a guest.</a>
                 </form>
             </div>
 
@@ -91,19 +96,19 @@
         <div id="modal-3" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>Just a Few Questions:</h4>
+                <h4>What's the Occasion?</h4>
 
                 <form action="" class="center-align">
                     <div class="question">
                         <div class="input-fields" id="playlistOptions">
                             <select>
-                                <option value="" disabled selected>What's the Occasion?</option>
-                                <option value="0">Keeping it Casual</option>
-                                <option value="1">Need to Apologize</option>
-                                <option value="2">Time to Break Up</option>
-                                <option value="3">First Date</option>
-                                <option value="4">Friend Zone</option>
-                                <option value="5">Dinner with my Cat</option>
+                                <option value="" disabled selected>Select One</option>
+                                <option value="casual+playlist">Keeping it Casual</option>
+                                <option value="apology+songs">Need to Apologize</option>
+                                <option value="breakup+songs">Time to Break Up</option>
+                                <option value="date+songs">First Date</option>
+                                <option value="friend+songs">Friend Zone</option>
+                                <option value="lonely+songs">Dinner with my Cat</option>
                             </select>
                         </div>
                     </div>
@@ -112,7 +117,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="modal-4-trigger" class="btn">Next</button>
+                <button class="btn modal-4-trigger">Next</button>
             </div>
 
         </div>
@@ -122,11 +127,10 @@
         <div id="modal-4" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>Almost done...</h4>
+                <h4>Food Preference</h4>
 
                 <form action="" class="center-align">
                     <div class="question">
-                        <h4>Food Preferences</h4>
                         <div class="input-field" id="mainIngredient">
                             <input id="Food_Main_Ing" type="text" class="validate">
                             <label for="Food_Main_Ing">Main Ingredient:</label>
@@ -134,26 +138,52 @@
                         <div class="input-fields" id="cuisine">
                             <select>
                                 <option value="" disabled selected>What's your cuisine preference?</option>
-                                <option value="0">American</option>
-                                <option value="1">Mexican</option>
-                                <option value="2">Asian</option>
-                                <option value="3">Indian</option>
-                                <option value="4">Mediterannean</option>
-                                <option value="5">Italian</option>
-                                <option value="6">No Preference</option>
+                                <option value="cuisine^cuisine-american">American</option>
+                                <option value="cuisine^cuisine-mexican">Mexican</option>
+                                <option value="cuisine^cuisine-asian">Asian</option>
+                                <option value="cuisine^cuisine-indian">Indian</option>
+                                <option value="cuisine^cuisine-mediterranean">Mediterannean</option>
+                                <option value="cuisine^cuisine-italian">Italian</option>
+                                <option value="">No Preference</option>
                             </select>
                         </div>
-                        <div class="input-fields" id="restrictions">
+                        <div class="input-fields" id="diet">
                             <select>
                                 <option value="" disabled selected>Dietary Restrictions?</option>
-                                <option value="1">Paleo</option>
-                                <option value="2">Gluten Free</option>
-                                <option value="3">Vegetarian</option>
-                                <option value="4">Vegan</option>
-                                <option value="5">Nut Free</option>
-                                <option value="6">None</option>
-                                <!-- others?? -->
+                                <option value="387^Lacto-ovo vegetarian">Vegetarian</option>
+                                <option value="386^Vegan">Vegan</option>
+                                <option value="403^Paleo">Paleo</option>
+                                <option value="">None</option>
                             </select>
+                        </div>
+                        <div class="question" id="allergies">
+                            <p>Allergies?</p>
+
+                            <span class="check-push">
+                                <input type="checkbox" id="393^Gluten-Free" />
+                                <label for="393^Gluten-Free">Gluten</label>
+                            </span>
+
+                            <span class="check-push">
+                                <input type="checkbox" id="394^Peanut-Free" />
+                                <label for="394^Peanut-Free">Peanuts</label>
+                            </span>
+                            <span class="check-push">
+                                <input type="checkbox" id="395^Tree Nut-Free" />
+                                <label for="395^Tree Nut-Free">Tree Nuts</label>
+                            </span>
+                            <span class="check-push">
+                                <input type="checkbox" id="398^Seafood-Free" />
+                                <label for="398^Seafood-Free">Seafood</label>
+                            </span>
+                            <span class="check-push">
+                                <input type="checkbox" id="396^Dairy-Free" />
+                                <label for="396^Dairy-Free">Dairy</label>
+                            </span>
+                            <span>
+                                <input type="checkbox" id="392^Wheat-Free" />
+                                <label for="392^Wheat-Free">Wheat</label>
+                            </span>
                         </div>
                         <button id="Food-Surprise" class="btn">Surprise Me</button>
                     </div>
@@ -162,7 +192,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="modal-5-trigger" class="btn">Next</button>
+                <button class="btn modal-5-trigger">Next</button>
             </div>
 
         </div>
@@ -172,22 +202,22 @@
         <div id="modal-5" class="modal modal-fixed-footer">
 
             <div class="modal-content">
-                <h4>Last step!</h4>
+                <h4>Drink Preferences</h4>
 
                 <form action="" class="center-align">
                     <div class="question" id="alcohol">
-                        <h4>Drink Preferences</h4>
+
                         <p>
-                            <input type="checkbox" id="alcohol-yes" />
+                            <input type="radio" name="none" id="alcohol-yes" />
                             <label for="alcohol-yes">Alcoholic</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="alcohol-no" />
+                            <input type="radio" name="none" id="alcohol-no" />
                             <label for="alcohol-no">Non-Alcoholic</label>
                         </p>
                         <div class="input-field" id="drinkIngredient">
                             <input id="Drink_Main_Ing" type="text" class="validate">
-                            <label for="Drink_Main_Ing">Type of Alcohol:</label>
+                            <label for="Drink_Main_Ing">Main Drink Ingredient:</label>
                         </div>
                         <button id="Drink-Surprise" class="btn">Surprise Me</button>
                     </div>
@@ -196,114 +226,68 @@
             </div>
 
             <div class="modal-footer">
-                    <button id="modal-5-close" class="btn">SET THE MOOD</button>
+                <button id="modal-5-close" class="btn">SET THE MOOD</button>
             </div>
 
         </div>
 
-        <!-- FORM FOR TESTING -->
-        <!-- <div class="row test-form-container">
-            <div class="col s12">
-                <div class="card grey darken-2 z-depth-5">
-                    <p class="red lighten-2 align-center">Form for testing API implementation - each section will move to triggered modals eventually</p>
-                    <form action="" class="test-form"> -->
-        <!-- OCCASION -->
-        <!-- <div class="question">
-                            <div class="input-fields" id="playlistOptions">
-                                <select>
-                                    <option value="" disabled selected>What's the Occasion?</option>
-                                    <option value="0">Keeping it Casual</option>
-                                    <option value="1">Need to Apologize</option>
-                                    <option value="2">Time to Break Up</option>
-                                    <option value="3">First Date</option>
-                                    <option value="4">Friend Zone</option>
-                                    <option value="5">Dinner with my Cat</option>
-                                </select>
-                            </div>
-                        </div> -->
-        <!-- FOOD -->
-        <!-- <div class="question">
-                            <h4>Food Preferences</h4>
-                            <div class="input-field" id="mainIngredient">
-                                <input id="Food_Main_Ing" type="text" class="validate">
-                                <label for="Food_Main_Ing">Main Ingredient:</label>
-                            </div>
-                            <div class="input-fields" id="cuisine">
-                                <select>
-                                    <option value="" disabled selected>What's your cuisine preference?</option>
-                                    <option value="1">American</option>
-                                    <option value="2">Tex Mex</option>
-                                    <option value="3">Asian</option>
-                                    <option value="4">Indian</option>
-                                    <option value="5">Middle Eastern</option>
-                                    <option value="6">No Preference</option>
-                                </select>
-                            </div>
-                            <div class="input-fields" id="restrictions">
-                                <select>
-                                    <option value="" disabled selected>Dietary Restrictions?</option>
-                                    <option value="1">Paleo</option>
-                                    <option value="2">Gluten Free</option>
-                                    <option value="3">Vegetarian</option>
-                                    <option value="4">Vegan</option>
-                                    <option value="5">Nut Free</option>
-                                    <option value="6">None</option> -->
-        <!-- others?? -->
-        <!-- </select>
-                            </div>
-                            <button id="Food-Surprise" class="btn">Surprise Me</button>
-                        </div> -->
-        <!-- DRINKS -->
-        <!-- <div class="question" id="alcohol">
-                            <h4>Drink Preferences</h4>
-                            <p>
-                                <input type="checkbox" id="alcohol-yes" />
-                                <label for="alcohol-yes">Alcoholic</label>
-                            </p>
-                            <p>
-                                <input type="checkbox" id="alcohol-no" />
-                                <label for="alcohol-no">Non-Alcoholic</label>
-                            </p>
-                            <div class="input-field" id="drinkIngredient">
-                                <input id="Drink_Main_Ing" type="text" class="validate">
-                                <label for="Drink_Main_Ing">Type of Alcohol:</label>
-                            </div>
-                            <button id="Drink-Surprise" class="btn">Surprise Me</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
-
         <!-- -- MAIN CONTENT -- This is the code for the main screen where API data is returned -->
-        <div class="row main break-up">
+        <div class="row main break-up hide">
 
             <!-- Video or Music Container -->
             <div class="col l4">
+
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
-                        <h4>YOUR PLAYLISTS</h4>
+                        <h4>PLAYLISTS</h4>
                     </div>
 
-                    <div class="card-tabs">
+                    <!-- PLAYLIST SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="playlist1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="playlist2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="playlist3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="playlist3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDER -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
-                                <a href="#playlist1">RECIPE 1</a>
+                                <a href="#playlist1">PLAYLIST 1</a>
                             </li>
                             <li class="tab">
-                                <a class="active" href="#playlist2">RECIPE 2</a>
+                                <a class="active" href="#playlist2">PLAYLIST 2</a>
                             </li>
                             <li class="tab">
-                                <a href="#playlist3">RECIPE 3</a>
+                                <a href="#playlist3">PLAYLIST 3</a>
                             </li>
                         </ul>
-
                     </div>
                     <div class="card-content grey grey darken-3">
                         <div id="playlist1"></div>
                         <div id="playlist2"></div>
                         <div id="playlist3"></div>
-                    </div>
+                    </div> -->
+
                 </div>
             </div>
 
@@ -311,9 +295,37 @@
             <div class="col l4">
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
-                        <h4>YOUR RECIPES</h4>
+                        <h4>RECIPES</h4>
                     </div>
-                    <div class="card-tabs">
+
+                    <!-- RECIPE SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="recipe1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="recipe1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="recipe2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="recipe2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="recipe3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="recipe3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDERS -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
                                 <a href="#recipe1">RECIPE 1</a>
@@ -327,16 +339,10 @@
                         </ul>
                     </div>
                     <div class="card-content grey grey darken-3">
-                        <div id="recipe1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quia voluptatem, perferendis atque
-                            distinctio modi dolorem libero, eligendi sapiente non possimus ut repellendus architecto repellat
-                            incidunt quisquam unde suscipit asperiores.</div>
-                        <div id="recipe2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nam iusto ratione laborum, ipsam
-                            voluptatibus non deleniti distinctio! Voluptatum officiis soluta modi officia libero perspiciatis
-                            iure ratione doloribus facere sit?</div>
-                        <div id="recipe3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam dicta ipsum placeat eos, qui
-                            architecto porro maiores at voluptatem ea dignissimos nam inventore non possimus autem? Quas
-                            fuga sequi repellendus.</div>
-                    </div>
+                        <div id="recipe1"></div>
+                        <div id="recipe2"></div>
+                        <div id="recipe3"></div>
+                    </div> -->
                 </div>
             </div>
 
@@ -344,9 +350,37 @@
             <div class="col l4">
                 <div class="card grey darken-2 z-depth-5">
                     <div class="card-content">
-                        <h4>YOUR DRINKS</h4>
+                        <h4>DRINKS</h4>
                     </div>
-                    <div class="card-tabs">
+
+                    <!-- DRINK SLIDER -->
+                    <div class="card-content grey darken-3">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li id="drinks1">
+                                    <!-- Image added here dynamically -->
+                                    <div id="drinks1-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="drinks2">
+                                    <!-- Image added here dynamically -->
+                                    <div id="drinks2-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                                <li id="drinks3">
+                                    <!-- Image added here dynamically -->
+                                    <div id="drinks3-text" class="caption left-align">
+                                        <!-- description and link added here dynamically -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COMMENTED OUT WHILE TESTING SLIDERS -->
+                    <!-- <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width grey darken-3">
                             <li class="tab">
                                 <a href="#drinks1">DRINKS 1</a>
@@ -360,16 +394,10 @@
                         </ul>
                     </div>
                     <div class="card-content grey darken-3">
-                        <div id="drinks1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo, voluptate at molestiae similique
-                            perspiciatis odit dolor hic? Iure temporibus odio recusandae culpa repudiandae id unde fugit
-                            omnis. Esse, quasi accusamus.
-                        </div>
-                        <div id="drinks2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, ex magnam earum delectus esse qui
-                            dicta odit nostrum id modi facilis iure, eius assumenda veritatis ut dolorum atque aperiam dolor!</div>
-                        <div id="drinks3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolorem similique ipsa, illo
-                            autem alias, inventore veniam iusto quae voluptatum velit esse eligendi commodi consectetur.
-                            Nemo sapiente maiores hic ex.</div>
-                    </div>
+                        <div id="drinks1"></div>
+                        <div id="drinks2"></div>
+                        <div id="drinks3"></div>
+                    </div> -->
                 </div>
             </div>
 
@@ -395,18 +423,18 @@
                     <i class="large material-icons">more_vert</i>
                 </a>
                 <ul>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-1 btn-large z-depth-5">
+                    <li class="modal-3-trigger">
+                        <a href="#modal-3" class="btn-floating btn-floating-1 btn-large z-depth-5">
                             <i class="large material-icons">mood</i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-2 btn-large z-depth-5">
+                    <li class="modal-4-trigger">
+                        <a href="#modal-4" class="btn-floating btn-floating-2 btn-large z-depth-5">
                             <i class="large material-icons">local_dining</i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn-floating btn-floating-3 btn-large z-depth-5">
+                    <li class="modal-5-trigger">
+                        <a href="#modal-5" class="btn-floating btn-floating-3 btn-large z-depth-5">
                             <i class="large material-icons">local_bar</i>
                         </a>
                     </li>

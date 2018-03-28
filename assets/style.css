@@ -1,6 +1,14 @@
 
 /* MAIN STYLES */
 
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.load-background {
+    background: url(images/snow.jpg) !important;
+}
+
 #logo1a {  
     float: right;
 
@@ -9,7 +17,7 @@
 .btn {
     background-color: #910a30;
     margin-top: 20px;
-    color: #c4a9b1;
+    color: #ebe1e4;
 }
 .btn:hover, .btn:active, .btn:focus {
     background-color: #640d26;
@@ -35,7 +43,7 @@ a {
     color: #c4a9b1;
 }
 form {
-    margin-top: 80px;
+    margin-top: 40px;
 }
 .input-field input:focus + label {
     color: #910a30 !important;
@@ -48,23 +56,62 @@ form {
 
 /* WELCOME SCREEN 1 */
 
-.welcome-card {
-    background: rgba(4,3,3,.8);
-    padding: 60px;
+.modal {
+    background-color: rgba(4,3,3,.8);
+    padding: 100px;
     margin-top: 50px; 
 }
-.welcome-card h1 {
+.modal .modal-content {
+    height: inherit !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    padding: 0 80px;
+}
+
+.modal h1 {
     color: #910a30;
 }
-.welcome-card h4 {
-    color: #c4a9b1;
-    font-weight: 100;
+.modal h4 {
+    color: #ebe1e4;
+    font-weight: 300;
 }
-.welcome-card a {
-    color: #c4a9b1;
+.input-fields {
+    margin-bottom: 10px;
+    color: white;
 }
-.welcome-card a:hover {
+.dropdown-content li>a, .dropdown-content li>span {
+    color: rgb(26, 24, 24);
+}
+.modal p {
+    color: #ebe1e4;
+    font-weight: 300;
+}
+.modal a {
+    color: #d4cdcf;
+}
+.modal a:hover {
     text-decoration: underline;
+}
+.modal button {
+    margin: 40px;
+}
+.modal .modal-footer {
+    background-color: rgba(0,0,0,0);
+}
+.select-wrapper span.caret {
+    color: white;
+}
+.select-wrapper input.select-dropdown {
+    color: lightgrey;
+}
+.check-push {
+    padding-right: 10px;
+}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+    background-color: #910a30;
+}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #910a30;
 }
 
 /* MAIN */
@@ -82,28 +129,26 @@ form {
     padding: 20px;
     margin-top: 100px;
 }
-.tabs .tab a {
-    color: #c4a9b1;
+h3 {
+    font-size: 1.5em;
+    color: black;
+    font-weight: 600;
+}
+/* Don't need tabs anymore with slider structure */
+/* .tabs .tab a {
+    color: #888183;
 }
 .tabs .tab a:hover, .tabs .tab a:active, .tabs .tab a:focus, .tabs .tab a.active {
     color: #c48290;
     
-}
-/* Getting overwritten by jquery?? */
-.tabs .tab a.active {
-    border-bottom: 1px solid #f17397 !important;
+} */
+.slider .indicators .indicator-item.active {
+    background-color: rgba(145, 10, 48, .3);
+} 
+.slider .indicators .indicator-item {
+    background-color: rgba(148, 135, 138, .3);
 }
 
-/*  TEST FORM */
-.test-form {
-    padding: 60px;
-}
-.input-fields {
-    margin-top: 20px;
-}
-.question {
-    margin-bottom: 60px;
-}
 
 /* MEDIA QUERIES */
 
