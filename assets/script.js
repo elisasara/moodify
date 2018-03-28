@@ -23,6 +23,7 @@ var firstDrink = "";
 var secondDrink = "";
 var thirdDrink = "";
 
+
 $(document).ready(function () {
 
   // on page load, divs are hidden 
@@ -66,8 +67,10 @@ $(document).ready(function () {
     $('#modal-5').modal('close');
   })
 
+  // ON CLICK EVENTS TO OPEN THE UPDATE MODALS
   $(".modal-6-trigger").on("click", function () {
     $('#modal-6').modal('open');
+    chosenPlaylist = "";
   })
 
   $("#modal-6-close").on("click", function () {
@@ -76,6 +79,11 @@ $(document).ready(function () {
 
   $(".modal-7-trigger").on("click", function () {
     $('#modal-7').modal('open');
+    mainIngredient = "";
+    cuisine = "";
+    diet = "";
+    allergyArr = [];
+    allergies = "";
   })
 
   $("#modal-7-close").on("click", function () {
@@ -84,11 +92,14 @@ $(document).ready(function () {
 
   $(".modal-8-trigger").on("click", function () {
     $('#modal-8').modal('open');
+    alcohol=true;
+    drinkIngredient = "";
   })
 
   $("#modal-8-close").on("click", function () {
     $('#modal-8').modal('close');
   })
+
 
   // SLIDERS
   $('.slider').slider();
@@ -101,30 +112,31 @@ $(document).ready(function () {
   // EVENT LISTENERS FOR ALL FORM INPUTS
   $("#playlistOptions").on("change", function () {
     chosenPlaylist = $(this).find(":selected").val();
+    console.log("chosen playlist: " + chosenPlaylist);
   });
 
   $("#mainIngredient").on("change", function () {
     mainIngredient = $("#Food_Main_Ing").val().trim();
-    console.log(mainIngredient);
+    console.log("main ingredient: " + mainIngredient);
   });
 
   $("#cuisine").on("change", function () {
     cuisine = $(this).find(":selected").val();
-    console.log(cuisine);
+    console.log("cuisine :" + cuisine);
   });
 
   $("#diet").on("change", function () {
     diet = $(this).find(":selected").val();
     // diet = parseInt($(this).find(":selected").val());
-    console.log(diet);
+    console.log("diet: " + diet);
   })
 
   $(":checkbox").on("change", function () {
+    event.preventDefault();
     if (this.checked) {
       allergies = $(this).attr("id");
       console.log(allergies);
       allergyArr.push(allergies);
-      console.log(allergyArr);
     }
     else {
       allergies = $(this).attr("id");
@@ -142,26 +154,26 @@ $(document).ready(function () {
     event.preventDefault();
     var ingredientOptions = ["chicken", "steak", "beef", "fish", "seafood", "pasta", "pizza", "vegetables"];
     var foodMath = Math.floor(Math.random() * ingredientOptions.length);
-    console.log(foodMath);
+    console.log("Food math: " + foodMath);
     mainIngredient = ingredientOptions[foodMath];
-    console.log(mainIngredient);
+    console.log("surprise main: " + mainIngredient);
     console.log("Food Surprise Clicked");
   })
 
 
   $("#alcohol-yes").on("change", function () {
     alcohol = true
-    console.log(alcohol);
+    console.log("Alcohol =" + alcohol);
   })
 
   $("#alcohol-no").on("change", function () {
     alcohol = false
-    console.log(alcohol);
+    console.log("Alcohol = " + alcohol);
   })
 
   $("#drinkIngredient").on("change", function () {
     drinkIngredient = $("#Drink_Main_Ing").val().trim();
-    console.log(drinkIngredient);
+    console.log("drink ingredient: " + drinkIngredient);
   });
 
   $("#Drink-Surprise").on("click", function () {
@@ -170,10 +182,67 @@ $(document).ready(function () {
     var drinkMath = Math.floor(Math.random() * drinkOptions.length);
     console.log(drinkMath);
     drinkIngredient = drinkOptions[drinkMath];
-    console.log(drinkIngredient);
+    console.log("Surprise drink: " + drinkIngredient);
     console.log("Drink Surprise Clicked");
-    // needs to go to next modal after this clicked!
   })
+  
+  // EVENT LISTENERS FOR UPDATE MODALS
+  $("#playlistUpdate").on("change", function () {
+    chosenPlaylist = $(this).find(":selected").val();
+    console.log("chosen playlist: " + chosenPlaylist);
+  });
+
+  $("#mainIngredientUpdate").on("change", function () {
+    mainIngredient = $("#Food_Main_Ing_Update").val().trim();
+    console.log("main ingredient: " + mainIngredient);
+  });
+
+  $("#cuisineUpdate").on("change", function () {
+    cuisine = $(this).find(":selected").val();
+    console.log("cuisine :" + cuisine);
+  });
+
+  $("#dietUpdate").on("change", function () {
+    diet = $(this).find(":selected").val();
+    // diet = parseInt($(this).find(":selected").val());
+    console.log("diet: " + diet);
+  });
+
+  $("#Food-Surprise-Update").on("click", function () {
+    event.preventDefault();
+    var ingredientOptions = ["chicken", "steak", "beef", "fish", "seafood", "pasta", "pizza", "vegetables"];
+    var foodMath = Math.floor(Math.random() * ingredientOptions.length);
+    console.log("Food math: " + foodMath);
+    mainIngredient = ingredientOptions[foodMath];
+    console.log("surprise main: " + mainIngredient);
+    console.log("Food Surprise Clicked");
+  })
+
+  $("#alcohol-yes-update").on("change", function () {
+    alcohol = true
+    console.log("Alcohol =" + alcohol);
+  })
+
+  $("#alcohol-no-update").on("change", function () {
+    alcohol = false
+    console.log("Alcohol = " + alcohol);
+  })
+
+  $("#drinkIngredientUpdate").on("change", function () {
+    drinkIngredient = $("#Drink_Main_Ing_Update").val().trim();
+    console.log("drink ingredient: " + drinkIngredient);
+  });
+
+  $("#Drink-Surprise-Update").on("click", function () {
+    event.preventDefault();
+    var drinkOptions = ["vodka", "gin", "tequila", "wine", "rum", "lemonade", "tea", "juice"];
+    var drinkMath = Math.floor(Math.random() * drinkOptions.length);
+    console.log(drinkMath);
+    drinkIngredient = drinkOptions[drinkMath];
+    console.log("Surprise drink: " + drinkIngredient);
+    console.log("Drink Surprise Clicked");
+  });
+
 
   $("#modal-5-close").on("click", function () {
     event.preventDefault();
@@ -186,32 +255,23 @@ $(document).ready(function () {
   })
 
   $("#modal-6-close").on("click", function () {
-    $("#playlist1").html("");
-    $("#playlist1-text").html("");
-    $("#playlist2").html("");
-    $("#playlist2-text").html("");
-    $("#playlist3").html("");
-    $("#playlist3-text").html("");
+    $("#playlist1-text").empty();
+    $("#playlist2-text").empty();
+    $("#playlist3-text").empty();
     youtubeCall();
   })
 
   $("#modal-7-close").on("click", function () {
-    $("#recipe1").html("");
-    $("#recipe1-text").html("");
-    $("#recipe2").html("");
-    $("#recipe2-text").html("");
-    $("#recipe3").html("");
-    $("#recipe3-text").html("");
+    $("#recipe1-text").empty();
+    $("#recipe2-text").empty();
+    $("#recipe3-text").empty();
     yummlyRecipeCall();
   })
 
   $("#modal-8-close").on("click", function () {
-    $("#drink1").html("");
-    $("#drink1-text").html("");
-    $("#drink2").html("");
-    $("#drink2-text").html("");
-    $("#drink3").html("");
-    $("#drink3-text").html("");
+    $("#drinks1-text").empty();
+    $("#drinks2-text").empty();
+    $("#drinks3-text").empty();
     yummlyDrinksCall();
   })
 
@@ -383,7 +443,7 @@ function yummlyRecipeCall() {
       };
       console.log(firstRecipe);
 
-      var recipeName = $("<h4>");
+      var recipeName = $("<h3>");
       // var recipeTime = $("<p>");
       var recipeLink = $("<a>");
       var recipeImage = $("<img>");
@@ -641,7 +701,7 @@ function yummlyDrinksCall() {
         // ingredients: drink3Result.ingredientLines
       };
 
-      var drinkName = $("<h4>");
+      var drinkName = $("<h3>");
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
 

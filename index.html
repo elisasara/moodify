@@ -422,7 +422,7 @@
 
                 <form action="" class="center-align">
                     <div class="question">
-                        <div class="input-fields" id="playlistOptions">
+                        <div class="input-fields" id="playlistUpdate">
                             <select>
                                 <option value="" disabled selected>Select One</option>
                                 <option value="hang+out+playlist">Keeping it Casual</option>
@@ -453,11 +453,11 @@
 
                 <form action="" class="center-align">
                     <div class="question">
-                        <div class="input-field" id="mainIngredient">
-                            <input id="Food_Main_Ing" type="text" class="validate">
-                            <label for="Food_Main_Ing">Main Ingredient:</label>
+                        <div class="input-field" id="mainIngredientUpdate">
+                            <input id="Food_Main_Ing_Update" type="text" class="validate">
+                            <label for="Food_Main_Ing_Update">Main Ingredient:</label>
                         </div>
-                        <div class="input-fields" id="cuisine">
+                        <div class="input-fields" id="cuisineUpdate">
                             <select>
                                 <option value="" disabled selected>What's your cuisine preference?</option>
                                 <option value="cuisine^cuisine-american">American</option>
@@ -469,7 +469,7 @@
                                 <option value="">No Preference</option>
                             </select>
                         </div>
-                        <div class="input-fields" id="diet">
+                        <div class="input-fields" id="dietUpdate">
                             <select>
                                 <option value="" disabled selected>Dietary Restrictions?</option>
                                 <option value="387^Lacto-ovo vegetarian">Vegetarian</option>
@@ -482,12 +482,12 @@
                             <p>Allergies?</p>
 
                             <span class="check-push">
-                                <input type="checkbox" id="393^Gluten-Free" />
+                                <input type="checkbox" class="allergyUpdate" id="393^Gluten-Free" />
                                 <label for="393^Gluten-Free">Gluten</label>
                             </span>
 
                             <span class="check-push">
-                                <input type="checkbox" id="394^Peanut-Free" />
+                                <input type="checkbox" class="allergyUpdate" id="394^Peanut-Free" />
                                 <label for="394^Peanut-Free">Peanuts</label>
                             </span>
                             <span class="check-push">
@@ -527,21 +527,21 @@
                 <h4>Drink Preferences</h4>
 
                 <form action="" class="center-align">
-                    <div class="question" id="alcohol">
+                    <div class="question" id="alcoholUpdate">
 
                         <p>
-                            <input type="radio" name="none" id="alcohol-yes" />
-                            <label for="alcohol-yes">Alcoholic</label>
+                            <input type="radio" name="none" id="alcohol-yes-update" />
+                            <label for="alcohol-yes-update">Alcoholic</label>
                         </p>
                         <p>
-                            <input type="radio" name="none" id="alcohol-no" />
-                            <label for="alcohol-no">Non-Alcoholic</label>
+                            <input type="radio" name="none" id="alcohol-no-update" />
+                            <label for="alcohol-no-update">Non-Alcoholic</label>
                         </p>
-                        <div class="input-field" id="drinkIngredient">
-                            <input id="Drink_Main_Ing" type="text" class="validate">
-                            <label for="Drink_Main_Ing">Main Drink Ingredient:</label>
+                        <div class="input-field" id="drinkIngredientUpdate">
+                            <input id="Drink_Main_Ing_Update" type="text" class="validate">
+                            <label for="Drink_Main_Ing_Update">Main Drink Ingredient:</label>
                         </div>
-                        <button id="Drink-Surprise" class="btn">Surprise Me</button>
+                        <button id="Drink-Surprise-Update" class="btn">Surprise Me</button>
                     </div>
                 </form>
 
