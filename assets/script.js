@@ -73,10 +73,41 @@ $(document).ready(function () {
     $('.slider').slider('pause');
   });
 
+  // Initialize Toast Notifications
+  Materialize.toast();
 
   // EVENT LISTENERS FOR ALL FORM INPUTS
   $("#playlistOptions").on("change", function () {
     chosenPlaylist = $(this).find(":selected").val();
+    // Changes header image for different occasions
+    if (chosenPlaylist === "lonely+songs") {
+      $("#header").css("background", "url(assets/images/cat.jpg)");
+      $("#header-text").text("Dinner with My Cat");
+    }
+    if (chosenPlaylist === "love+songs") {
+      $("#header").css("background", "url(assets/images/datenight.jpg)");
+      $("#header-text").text("Date Night");
+    }
+    if (chosenPlaylist === "dinner+party+music") {
+      $("#header").css("background", "url(assets/images/friendzone.jpg)");
+      $("#header-text").text("Friend Zone");
+    }
+    if (chosenPlaylist === "breakup+songs") {
+      $("#header").css("background", "url(assets/images/storm.jpg)");
+      $("#header-text").text("The Break Up");
+    }
+    if (chosenPlaylist === "apology+songs") {
+      $("#header").css("background", "url(assets/images/apology.jpg)")
+      $("#header-text").text("Need to Apologize");
+    }
+    if (chosenPlaylist === "hang+out+playlist") {
+      $("#header").css("background", "url(assets/images/casual.jpg)")
+      $("#header-text").text("Keeping it Casual");
+    } 
+    else {
+      $("#header").css("background", "url(assets/images/casual.jpg)")
+      $("#header-text").text("Enjoy the Mood");
+    }
   });
 
   $("#mainIngredient").on("change", function () {
@@ -114,6 +145,7 @@ $(document).ready(function () {
     }
   });
 
+  
 
   $("#Food-Surprise").on("click", function () {
     event.preventDefault();
@@ -123,6 +155,7 @@ $(document).ready(function () {
     mainIngredient = ingredientOptions[foodMath];
     console.log(mainIngredient);
     console.log("Food Surprise Clicked");
+    Materialize.toast('Click "Next" to continue!', 4000);
     // needs to go to next modal after this clicked!
   })
 
@@ -150,6 +183,7 @@ $(document).ready(function () {
     drinkIngredient = drinkOptions[drinkMath];
     console.log(drinkIngredient);
     console.log("Drink Surprise Clicked");
+    Materialize.toast('Click "Set the Mood" to continue!', 4000);
     // needs to go to next modal after this clicked!
   })
 
@@ -335,7 +369,7 @@ function yummlyRecipeCall() {
       };
       console.log(firstRecipe);
 
-      var recipeName = $("<h4>");
+      var recipeName = $("<h3>");
       var recipeTime = $("<p>");
       var recipeLink = $("<a>");
       var recipeImage = $("<img>");
@@ -376,7 +410,7 @@ function yummlyRecipeCall() {
       console.log(secondRecipe);
 
 
-      var recipeName = $("<h4>");
+      var recipeName = $("<h3>");
 
       var recipeTime = $("<p>");
       var recipeLink = $("<a>");
@@ -417,7 +451,7 @@ function yummlyRecipeCall() {
       };
       console.log(thirdRecipe);
 
-      var recipeName = $("<h4>");
+      var recipeName = $("<h3>");
       var recipeTime = $("<p>");
       var recipeLink = $("<a>");
       var recipeImage = $("<img>");
@@ -511,7 +545,7 @@ function yummlyDrinksCall() {
       };
 
 
-      var drinkName = $("<h4>");
+      var drinkName = $("<h3>");
 
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
@@ -554,7 +588,7 @@ function yummlyDrinksCall() {
         ingredients: drink2Result.ingredientLines
       };
 
-      var drinkName = $("<h4>");
+      var drinkName = $("<h3>");
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
 
@@ -594,7 +628,7 @@ function yummlyDrinksCall() {
         ingredients: drink3Result.ingredientLines
       };
 
-      var drinkName = $("<h4>");
+      var drinkName = $("<h3>");
       var drinkLink = $("<a>");
       var drinkImage = $("<img>");
 
