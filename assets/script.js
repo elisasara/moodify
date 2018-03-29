@@ -118,7 +118,6 @@ $(document).ready(function () {
 
     // Changes header image for different occasions
     changeHeader();
-
     console.log("chosen playlist: " + chosenPlaylist);
 
   });
@@ -169,7 +168,6 @@ $(document).ready(function () {
     console.log("Food Surprise Clicked");
 
     Materialize.toast('Click "Next" to continue!', 4000);
-    // needs to go to next modal after this clicked!
 
   })
 
@@ -234,6 +232,7 @@ $(document).ready(function () {
     mainIngredient = ingredientOptions[foodMath];
     console.log("surprise main: " + mainIngredient);
     console.log("Food Surprise Clicked");
+    Materialize.toast('Click "Update Food" to continue!', 4000);
   })
 
   $("#alcohol-yes-update").on("change", function () {
@@ -259,6 +258,7 @@ $(document).ready(function () {
     drinkIngredient = drinkOptions[drinkMath];
     console.log("Surprise drink: " + drinkIngredient);
     console.log("Drink Surprise Clicked");
+    Materialize.toast('Click "Update Drinks" to continue!', 4000);
   });
 
 
@@ -275,7 +275,8 @@ $(document).ready(function () {
   $("#modal-6-close").on("click", function () {
     $("#playlist1-text").empty();
     $("#playlist2-text").empty();
-    $("#playlist3-text").empty();
+    $("#playlist3-text").empty(); 
+    
     youtubeCall();
     changeHeader();
   })
@@ -357,21 +358,18 @@ function youtubeCall() {
       firstPlaylist = {
         title: youtubeResult[playlist1].snippet.title,
         link: "https://www.youtube.com/playlist?list=" + youtubeResult[playlist1].id.playlistId,
-        // description: youtubeResult[playlist1].snippet.description,
         image: youtubeResult[playlist1].snippet.thumbnails.high.url
       },
 
       secondPlaylist = {
         title: youtubeResult[playlist2].snippet.title,
         link: "https://www.youtube.com/playlist?list=" + youtubeResult[playlist2].id.playlistId,
-        // description: youtubeResult[playlist2].snippet.description,
         image: youtubeResult[playlist2].snippet.thumbnails.high.url
       },
 
       thirdPlaylist = {
         title: youtubeResult[playlist3].snippet.title,
         link: "https://www.youtube.com/playlist?list=" + youtubeResult[playlist3].id.playlistId,
-        // description: youtubeResult[playlist3].snippet.description,
         image: youtubeResult[playlist3].snippet.thumbnails.high.url
       }
     ];
@@ -380,7 +378,6 @@ function youtubeCall() {
     //FOR LOOP TO PUSH THE INFORMATION INTO THE CORRECT AREAS OF THE HTML
     for (var i = 0; i < playlistArr.length; i++) {
       var pTitle = $("<h3>");
-      // var pDescription = $("<p>");
       var pLink = $("<a>");
       var pImage = $("<img>");
 
@@ -402,17 +399,14 @@ function youtubeCall() {
       // NG-Pushing playlist description and link to #playlist1-text, #playlist2-text, playlist3-text
       if (i === 0) {
         $("#playlist1-text").append(pLink);
-        // $("#playlist1-text").append(pDescription);
         $("#playlist1").prepend(pImage);
       }
       else if (i === 1) {
         $("#playlist2-text").append(pLink);
-        // $("#playlist2-text").append(pDescription);
         $("#playlist2").prepend(pImage);
       }
       else {
         $("#playlist3-text").append(pLink);
-        // $("#playlist3-text").append(pDescription);
         $("#playlist3").prepend(pImage);
       }
     }
@@ -485,7 +479,6 @@ function yummlyRecipeCall() {
         name: recipe1Result.name,
         link: recipe1Result.attribution.url,
         image: recipe1Result.images[0].hostedLargeUrl,
-        // time: recipe1Result.totalTimeInSeconds
       };
       console.log(firstRecipe);
 
@@ -501,12 +494,6 @@ function yummlyRecipeCall() {
       recipeLink.html(recipeName);
 
       $("#recipe1-text").append(recipeLink);
-
-      // CREATING THE TIME ELEMENT
-      // var timeInMinutes = firstRecipe.time / 60;
-      // console.log(timeInMinutes);
-      // recipeTime.text("Prep time: " + timeInMinutes + " minutes");
-      // $("#recipe1-text").append(recipeTime);
 
       // // CREATING THE IMAGE ELEMENT
       recipeImage.attr("src", firstRecipe.image);
@@ -525,7 +512,6 @@ function yummlyRecipeCall() {
         name: recipe2Result.name,
         link: recipe2Result.attribution.url,
         image: recipe2Result.images[0].hostedLargeUrl,
-        // time: recipe2Result.totalTimeInSeconds
       };
       console.log(secondRecipe);
 
@@ -541,12 +527,6 @@ function yummlyRecipeCall() {
       recipeLink.html(recipeName);
 
       $("#recipe2-text").append(recipeLink);
-
-      // CREATING THE TIME ELEMENT
-      // var timeInMinutes = secondRecipe.time / 60;
-      // console.log(timeInMinutes);
-      // recipeTime.text("Prep time: " + timeInMinutes + " minutes");
-      // $("#recipe2-text").append(recipeTime);
 
       // // CREATING THE IMAGE ELEMENT
       recipeImage.attr("src", secondRecipe.image);
@@ -565,7 +545,6 @@ function yummlyRecipeCall() {
         name: recipe3Result.name,
         link: recipe3Result.attribution.url,
         image: recipe3Result.images[0].hostedLargeUrl,
-        // time: recipe3Result.totalTimeInSeconds
       };
       console.log(thirdRecipe);
 
@@ -581,12 +560,6 @@ function yummlyRecipeCall() {
 
       $("#recipe3-text").append(recipeLink);
 
-      // CREATING THE TIME ELEMENT
-      // var timeInMinutes = thirdRecipe.time / 60;
-      // console.log(timeInMinutes);
-      // recipeTime.text("Prep time: " + timeInMinutes + " minutes");
-      // $("#recipe3-text").append(recipeTime);
-
       // // CREATING THE IMAGE ELEMENT
       recipeImage.attr("src", thirdRecipe.image);
       recipeImage.addClass("responsive-img");
@@ -599,8 +572,6 @@ function yummlyRecipeCall() {
 // AJAX CALL FOR YUMMLY DRINK RECIPES
 
 function yummlyDrinksCall() {
-
-  // template drink call: http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=&allowedCourse[]=course^course-Beverages&excludedCourse[]=course^course-Cocktails
 
   var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
   var drinksURL = "http://api.yummly.com/v1/api/recipes?_app_id=9e74b819&_app_key=b87669ce79a8dc3323432bf6424282ab&q=" + drinkIngredient + "&maxResult=25&requirePictures=true&allowedCourse[]="
@@ -678,18 +649,6 @@ function yummlyDrinksCall() {
       drinkImage.attr("src", firstDrink.image);
       drinkImage.addClass("responsive-img");
       $("#drinks1").prepend(drinkImage);
-
-
-      // CREATING THE INGREDIENTS LIST ELEMENT
-      // for (var i = 0; i < firstDrink.ingredients.length; i++) {
-      //   var ingredientList = $("<ul>");
-      //   var ingredients = $("<li>");
-
-      //   ingredients.text(firstDrink.ingredients[i]);
-      //   ingredientList.append(ingredients);
-      //   $("#drinks1-text").append(ingredientList);
-
-      // }
     })
 
     // DRINK 2 AJAX CALL
@@ -702,7 +661,6 @@ function yummlyDrinksCall() {
         name: drink2Result.name,
         link: drink2Result.attribution.url,
         image: drink2Result.images[0].hostedLargeUrl,
-        // ingredients: drink2Result.ingredientLines
       };
 
       var drinkName = $("<h3>");
@@ -720,16 +678,6 @@ function yummlyDrinksCall() {
       drinkImage.attr("src", secondDrink.image);
       drinkImage.addClass("responsive-img");
       $("#drinks2").prepend(drinkImage);
-
-      // CREATING THE INGREDIENTS LIST ELEMENT
-      // for (var i = 0; i < secondDrink.ingredients.length; i++) {
-      //   var ingredientList = $("<ul>");
-      //   var ingredients = $("<li>");
-
-      //   ingredients.text(secondDrink.ingredients[i]);
-      //   ingredientList.append(ingredients);
-      //   $("#drinks2-text").append(ingredientList);
-      // }
     });
 
     // DRINK 3 AJAX CALL
@@ -742,7 +690,6 @@ function yummlyDrinksCall() {
         name: drink3Result.name,
         link: drink3Result.attribution.url,
         image: drink3Result.images[0].hostedLargeUrl,
-        // ingredients: drink3Result.ingredientLines
       };
 
       var drinkName = $("<h3>");
@@ -760,16 +707,6 @@ function yummlyDrinksCall() {
       drinkImage.attr("src", thirdDrink.image);
       drinkImage.addClass("responsive-img");
       $("#drinks3").prepend(drinkImage);
-
-      // CREATING THE INGREDIENTS LIST ELEMENT
-      // for (var i = 0; i < thirdDrink.ingredients.length; i++) {
-      //   var ingredientList = $("<ul>");
-      //   var ingredients = $("<li>");
-
-      //   ingredients.text(thirdDrink.ingredients[i]);
-      //   ingredientList.append(ingredients);
-      //   $("#drinks3-text").append(ingredientList);
-      // };
     })
   })
 };
