@@ -138,15 +138,15 @@ $(document).ready(function () {
     console.log("diet: " + diet);
   })
 
-  $(":checkbox").on("change", function () {
+  $("#allergies").on("change", ":checkbox", function () {
     event.preventDefault();
     if (this.checked) {
-      allergies = $(this).attr("id");
+      allergies = $(this).attr("value");
       console.log(allergies);
       allergyArr.push(allergies);
     }
     else {
-      allergies = $(this).attr("id");
+      allergies = $(this).attr("value");
       console.log(allergies);
       for (var i = allergyArr.length - 1; i >= 0; i--) {
         if (allergyArr[i] === allergies) {
@@ -223,6 +223,26 @@ $(document).ready(function () {
     // diet = parseInt($(this).find(":selected").val());
     console.log("diet: " + diet);
   });
+  
+  $("#allergiesUpdate").on("change", ":checkbox", function () {
+    event.preventDefault();
+    if (this.checked) {
+      allergies = $(this).attr("value");
+      console.log(allergies);
+      allergyArr.push(allergies);
+    }
+    else {
+      allergies = $(this).attr("value");
+      console.log(allergies);
+      for (var i = allergyArr.length - 1; i >= 0; i--) {
+        if (allergyArr[i] === allergies) {
+          allergyArr.splice(i, 1);
+        }
+      }
+    }
+    console.log("Allergy Array: " + allergyArr);
+  });
+
 
   $("#Food-Surprise-Update").on("click", function () {
     event.preventDefault();
