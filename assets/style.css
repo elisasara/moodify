@@ -62,12 +62,11 @@ form {
     margin-top: 50px; 
 }
 .modal .modal-content {
-    height: inherit !important;
+    height: 100%;
     top: 50% !important;
     transform: translateY(-50%) !important;
     padding: 0 80px;
 }
-
 .modal h1 {
     color: #910a30;
 }
@@ -118,7 +117,7 @@ form {
 
 #header {
     height: 200px;
-    background: url(images/storm.jpg)
+    background: url(images/storm.jpg);
 }
 #header h1 {
     margin: 4rem auto;
@@ -133,15 +132,15 @@ h3 {
     font-size: 1.5em;
     color: black;
     font-weight: 600;
+    background-color: rgba(255, 255, 255, .4);
+    padding: 5px;
 }
-/* Don't need tabs anymore with slider structure */
-/* .tabs .tab a {
-    color: #888183;
+.slider .slides li .caption {
+    width: 100%;
+    top: -21px;
+    left: 0;
 }
-.tabs .tab a:hover, .tabs .tab a:active, .tabs .tab a:focus, .tabs .tab a.active {
-    color: #c48290;
-    
-} */
+
 .slider .indicators .indicator-item.active {
     background-color: rgba(145, 10, 48, .3);
 } 
