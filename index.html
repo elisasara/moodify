@@ -13,6 +13,11 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script> -->
     <script src="assets/firebase.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
 
     <title>Moodify</title>
@@ -26,8 +31,10 @@
     <!-- -- MAIN HEADER -- This is a full-width header section that can be changed with javascript depending on the "occasion" -->
     <div class="row">
         <div id="header" class="col s12 center-align hide">
-            <h1 id="header-text"></h1>
-           
+
+            <h1 id="header-text">Enjoy the Mood</h1>
+          
+
 
         </div>
     </div>
@@ -131,6 +138,7 @@
 
                 <form action="" class="center-align">
                     <div class="question">
+                        <button id="Food-Surprise" class="btn">Surprise Me</button>
                         <div class="input-field" id="mainIngredient">
                             <input id="Food_Main_Ing" type="text" class="validate">
                             <label for="Food_Main_Ing">Main Ingredient:</label>
@@ -160,34 +168,34 @@
                             <p>Allergies?</p>
 
                             <span class="check-push">
-                                <input type="checkbox" id="393^Gluten-Free" />
-                                <label for="393^Gluten-Free">Gluten</label>
+                                <input type="checkbox" value="393^Gluten-Free" id="glutenFree"/>
+                                <label for="glutenFree">Gluten</label>
                             </span>
 
                             <span class="check-push">
-                                <input type="checkbox" id="394^Peanut-Free" />
-                                <label for="394^Peanut-Free">Peanuts</label>
+                                <input type="checkbox" value="394^Peanut-Free" id="peanutFree" />
+                                <label for="peanutFree">Peanuts</label>
                             </span>
                             <span class="check-push">
-                                <input type="checkbox" id="395^Tree Nut-Free" />
-                                <label for="395^Tree Nut-Free">Tree Nuts</label>
+                                <input type="checkbox" value="395^Tree Nut-Free" id="treeNutFree" />
+                                <label for="treeNutFree">Tree Nuts</label>
                             </span>
                             <span class="check-push">
-                                <input type="checkbox" id="398^Seafood-Free" />
-                                <label for="398^Seafood-Free">Seafood</label>
+                                <input type="checkbox" value="398^Seafood-Free" id="seafoodFree" />
+                                <label for="seafoodFree">Seafood</label>
                             </span>
                             <span class="check-push">
-                                <input type="checkbox" id="396^Dairy-Free" />
-                                <label for="396^Dairy-Free">Dairy</label>
+                                <input type="checkbox" value="396^Dairy-Free" id="dairyFree"/>
+                                <label for="dairyFree">Dairy</label>
                             </span>
                             <span>
-                                <input type="checkbox" id="392^Wheat-Free" />
-                                <label for="392^Wheat-Free">Wheat</label>
+                                <input type="checkbox" value="392^Wheat-Free" id="wheatFree" />
+                                <label for="wheatFree">Wheat</label>
                             </span>
                         </div>
-                        <button id="Food-Surprise" class="btn">Surprise Me</button>
+
                     </div>
-                </form> 
+                </form>
 
             </div>
 
@@ -206,7 +214,7 @@
 
                 <form action="" class="center-align">
                     <div class="question" id="alcohol">
-
+                        <button id="Drink-Surprise" class="btn">Surprise Me</button>
                         <p>
                             <input type="radio" name="none" id="alcohol-yes" />
                             <label for="alcohol-yes">Alcoholic</label>
@@ -219,7 +227,6 @@
                             <input id="Drink_Main_Ing" type="text" class="validate">
                             <label for="Drink_Main_Ing">Main Drink Ingredient:</label>
                         </div>
-                        <button id="Drink-Surprise" class="btn">Surprise Me</button>
                     </div>
                 </form>
 
@@ -419,145 +426,144 @@
             </div>
 
             <!-- --MODALS FOR FIXED ACTION BUTTONS-- -->
-                    <!-- -- MODAL-6 -- Occasion Update -->
+            <!-- -- MODAL-6 -- Occasion Update -->
 
-        <div id="modal-6" class="modal modal-fixed-footer">
+            <div id="modal-6" class="modal modal-fixed-footer">
 
-            <div class="modal-content">
-                <h4>What's the Occasion?</h4>
+                <div class="modal-content">
+                    <h4>What's the Occasion?</h4>
 
-                <form action="" class="center-align">
-                    <div class="question">
-                        <div class="input-fields" id="playlistUpdate">
-                            <select>
-                                <option value="" disabled selected>Select One</option>
-                                <option value="hang+out+playlist">Keeping it Casual</option>
-                                <option value="apology+songs">Need to Apologize</option>
-                                <option value="breakup+songs">Time to Break Up</option>
-                                <option value="love+songs">Date Night</option>
-                                <option value="dinner+party+music">Friend Zone</option>
-                                <option value="lonely+songs">Dinner with my Cat</option>
-                            </select>
+                    <form action="" class="center-align">
+                        <div class="question">
+                            <div class="input-fields" id="playlistUpdate">
+                                <select>
+                                    <option value="" disabled selected>Select One</option>
+                                    <option value="hang+out+playlist">Keeping it Casual</option>
+                                    <option value="apology+songs">Need to Apologize</option>
+                                    <option value="breakup+songs">Time to Break Up</option>
+                                    <option value="love+songs">Date Night</option>
+                                    <option value="dinner+party+music">Friend Zone</option>
+                                    <option value="lonely+songs">Dinner with my Cat</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="modal-6-close" class="btn">Update Mood</button>
+                </div>
 
             </div>
 
-            <div class="modal-footer">
-                <button id="modal-6-close" class="btn">Update Mood</button>
-            </div>
+            <!-- -- MODAL-7 -- Food Update -->
 
-        </div>
+            <div id="modal-7" class="modal modal-fixed-footer">
 
-        <!-- -- MODAL-7 -- Food Update -->
+                <div class="modal-content">
+                    <h4>Food Preference</h4>
 
-        <div id="modal-7" class="modal modal-fixed-footer">
+                    <form action="" class="center-align">
+                        <div class="question">
+                            <button id="Food-Surprise-Update" class="btn">Surprise Me</button>
+                            <div class="input-field" id="mainIngredientUpdate">
+                                <input id="Food_Main_Ing_Update" type="text" class="validate">
+                                <label for="Food_Main_Ing_Update">Main Ingredient:</label>
+                            </div>
+                            <div class="input-fields" id="cuisineUpdate">
+                                <select>
+                                    <option value="" disabled selected>What's your cuisine preference?</option>
+                                    <option value="cuisine^cuisine-american">American</option>
+                                    <option value="cuisine^cuisine-mexican">Mexican</option>
+                                    <option value="cuisine^cuisine-asian">Asian</option>
+                                    <option value="cuisine^cuisine-indian">Indian</option>
+                                    <option value="cuisine^cuisine-mediterranean">Mediterannean</option>
+                                    <option value="cuisine^cuisine-italian">Italian</option>
+                                    <option value="">No Preference</option>
+                                </select>
+                            </div>
+                            <div class="input-fields" id="dietUpdate">
+                                <select>
+                                    <option value="" disabled selected>Dietary Restrictions?</option>
+                                    <option value="387^Lacto-ovo vegetarian">Vegetarian</option>
+                                    <option value="386^Vegan">Vegan</option>
+                                    <option value="403^Paleo">Paleo</option>
+                                    <option value="">None</option>
+                                </select>
+                            </div>
+                            <div class="question" id="allergiesUpdate">
+                                <p>Allergies?</p>
 
-            <div class="modal-content">
-                <h4>Food Preference</h4>
+                                <span class="check-push">
+                                    <input type="checkbox" value="393^Gluten-Free" id="glutenFreeUpdate" />
+                                    <label for="glutenFreeUpdate">Gluten</label>
+                                </span>
+                                <span class="check-push">
+                                    <input type="checkbox" value="394^Peanut-Free" id="peanutFreeUpdate" />
+                                    <label for="peanutFreeUpdate">Peanuts</label>
+                                </span>
+                                <span class="check-push">
+                                    <input type="checkbox" value="395^Tree Nut-Free" id="treeNutUpdate" />
+                                    <label for="treeNutUpdate">Tree Nuts</label>
+                                </span>
+                                <span class="check-push">
+                                    <input type="checkbox" value="398^Seafood-Free" id="seafoodUpdate" />
+                                    <label for="seafoodUpdate">Seafood</label>
+                                </span>
+                                <span class="check-push">
+                                    <input type="checkbox" value="396^Dairy-Free" id="dairyFreeUpdate" />
+                                    <label for="dairyFreeUpdate">Dairy</label>
+                                </span>
+                                <span>
+                                    <input type="checkbox" value="392^Wheat-Free" id="wheatFreeUpdate" />
+                                    <label for="wheatFreeUpdate">Wheat</label>
+                                </span>
+                            </div>
 
-                <form action="" class="center-align">
-                    <div class="question">
-                        <div class="input-field" id="mainIngredientUpdate">
-                            <input id="Food_Main_Ing_Update" type="text" class="validate">
-                            <label for="Food_Main_Ing_Update">Main Ingredient:</label>
                         </div>
-                        <div class="input-fields" id="cuisineUpdate">
-                            <select>
-                                <option value="" disabled selected>What's your cuisine preference?</option>
-                                <option value="cuisine^cuisine-american">American</option>
-                                <option value="cuisine^cuisine-mexican">Mexican</option>
-                                <option value="cuisine^cuisine-asian">Asian</option>
-                                <option value="cuisine^cuisine-indian">Indian</option>
-                                <option value="cuisine^cuisine-mediterranean">Mediterannean</option>
-                                <option value="cuisine^cuisine-italian">Italian</option>
-                                <option value="">No Preference</option>
-                            </select>
-                        </div>
-                        <div class="input-fields" id="dietUpdate">
-                            <select>
-                                <option value="" disabled selected>Dietary Restrictions?</option>
-                                <option value="387^Lacto-ovo vegetarian">Vegetarian</option>
-                                <option value="386^Vegan">Vegan</option>
-                                <option value="403^Paleo">Paleo</option>
-                                <option value="">None</option>
-                            </select>
-                        </div>
-                        <div class="question" id="allergies">
-                            <p>Allergies?</p>
+                    </form>
 
-                            <span class="check-push">
-                                <input type="checkbox" class="allergyUpdate" id="393^Gluten-Free" />
-                                <label for="393^Gluten-Free">Gluten</label>
-                            </span>
+                </div>
 
-                            <span class="check-push">
-                                <input type="checkbox" class="allergyUpdate" id="394^Peanut-Free" />
-                                <label for="394^Peanut-Free">Peanuts</label>
-                            </span>
-                            <span class="check-push">
-                                <input type="checkbox" id="395^Tree Nut-Free" />
-                                <label for="395^Tree Nut-Free">Tree Nuts</label>
-                            </span>
-                            <span class="check-push">
-                                <input type="checkbox" id="398^Seafood-Free" />
-                                <label for="398^Seafood-Free">Seafood</label>
-                            </span>
-                            <span class="check-push">
-                                <input type="checkbox" id="396^Dairy-Free" />
-                                <label for="396^Dairy-Free">Dairy</label>
-                            </span>
-                            <span>
-                                <input type="checkbox" id="392^Wheat-Free" />
-                                <label for="392^Wheat-Free">Wheat</label>
-                            </span>
-                        </div>
-                        <button id="Food-Surprise" class="btn">Surprise Me</button>
-                    </div>
-                </form> 
-
-            </div>
-
-            <div class="modal-footer">
-                <button id= "modal-7-close" class="btn">Update Food</button>
-            </div>
-
-        </div>
-
-        <!-- -- MODAL-8 -- Drink Update -->
-
-        <div id="modal-8" class="modal modal-fixed-footer">
-
-            <div class="modal-content">
-                <h4>Drink Preferences</h4>
-
-                <form action="" class="center-align">
-                    <div class="question" id="alcoholUpdate">
-
-                        <p>
-                            <input type="radio" name="none" id="alcohol-yes-update" />
-                            <label for="alcohol-yes-update">Alcoholic</label>
-                        </p>
-                        <p>
-                            <input type="radio" name="none" id="alcohol-no-update" />
-                            <label for="alcohol-no-update">Non-Alcoholic</label>
-                        </p>
-                        <div class="input-field" id="drinkIngredientUpdate">
-                            <input id="Drink_Main_Ing_Update" type="text" class="validate">
-                            <label for="Drink_Main_Ing_Update">Main Drink Ingredient:</label>
-                        </div>
-                        <button id="Drink-Surprise-Update" class="btn">Surprise Me</button>
-                    </div>
-                </form>
+                <div class="modal-footer">
+                    <button id="modal-7-close" class="btn">Update Food</button>
+                </div>
 
             </div>
 
-            <div class="modal-footer">
-                <button id="modal-8-close" class="btn">Update Drinks</button>
-            </div>
+            <!-- -- MODAL-8 -- Drink Update -->
 
-        </div>
+            <div id="modal-8" class="modal modal-fixed-footer">
+
+                <div class="modal-content">
+                    <h4>Drink Preferences</h4>
+
+                    <form action="" class="center-align">
+                        <div class="question" id="alcoholUpdate">
+                            <button id="Drink-Surprise-Update" class="btn">Surprise Me</button>
+                            <p>
+                                <input type="radio" name="none" id="alcohol-yes-update" />
+                                <label for="alcohol-yes-update">Alcoholic</label>
+                            </p>
+                            <p>
+                                <input type="radio" name="none" id="alcohol-no-update" />
+                                <label for="alcohol-no-update">Non-Alcoholic</label>
+                            </p>
+                            <div class="input-field" id="drinkIngredientUpdate">
+                                <input id="Drink_Main_Ing_Update" type="text" class="validate">
+                                <label for="Drink_Main_Ing_Update">Main Drink Ingredient:</label>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="modal-8-close" class="btn">Update Drinks</button>
+                </div>
+
+            </div>
 
             <!-- -- FIXED ACTION BUTTON -- This button triggers additional buttons that allow user to re-select occasion, food, and drink options. We'll probably want to trigger a modal with the input options for each -->
             <div class="fixed-action-btn">
