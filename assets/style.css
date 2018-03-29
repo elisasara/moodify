@@ -117,11 +117,16 @@ form {
 
 #header {
     height: 200px;
-    background: url(images/storm.jpg);
+    background: url(images/genmood.jpg) no-repeat;
+    background-size: cover;
 }
 #header h1 {
     margin: 4rem auto;
     color: #f0e3e6;
+    font-weight: 600;
+    /* background: rgb(83, 82, 82, .4);
+    display: inline-block;
+    padding: 10px; */
 }
 .main {
     width: 100%;
