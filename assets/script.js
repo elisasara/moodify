@@ -141,7 +141,7 @@ $(document).ready(function () {
       $("#header").css("background", "url(assets/images/casual.jpg)")
       $("#header-text").text("Keeping it Casual");
     } 
-    else {
+    if (chosenPlaylist === "") {
       $("#header").css("background", "url(assets/images/casual.jpg)")
       $("#header-text").text("Enjoy the Mood");
     }
@@ -196,7 +196,6 @@ $(document).ready(function () {
     console.log("Food Surprise Clicked");
 
     Materialize.toast('Click "Next" to continue!', 4000);
-    // needs to go to next modal after this clicked!
 
   })
 
@@ -260,6 +259,7 @@ $(document).ready(function () {
     mainIngredient = ingredientOptions[foodMath];
     console.log("surprise main: " + mainIngredient);
     console.log("Food Surprise Clicked");
+    Materialize.toast('Click "Update Food" to continue!', 4000);
   })
 
   $("#alcohol-yes-update").on("change", function () {
@@ -285,6 +285,7 @@ $(document).ready(function () {
     drinkIngredient = drinkOptions[drinkMath];
     console.log("Surprise drink: " + drinkIngredient);
     console.log("Drink Surprise Clicked");
+    Materialize.toast('Click "Update Drinks" to continue!', 4000);
   });
 
 
@@ -302,6 +303,37 @@ $(document).ready(function () {
     $("#playlist1-text").empty();
     $("#playlist2-text").empty();
     $("#playlist3-text").empty();
+
+            // Changes header image for different occasions
+            if (chosenPlaylist === "lonely+songs") {
+              $("#header").css("background", "url(assets/images/cat.jpg)");
+              $("#header-text").text("Dinner with My Cat");
+            }
+            if (chosenPlaylist === "love+songs") {
+              $("#header").css("background", "url(assets/images/datenight.jpg)");
+              $("#header-text").text("Date Night");
+            }
+            if (chosenPlaylist === "dinner+party+music") {
+              $("#header").css("background", "url(assets/images/friendzone.jpg)");
+              $("#header-text").text("Friend Zone");
+            }
+            if (chosenPlaylist === "breakup+songs") {
+              $("#header").css("background", "url(assets/images/storm.jpg)");
+              $("#header-text").text("The Break Up");
+            }
+            if (chosenPlaylist === "apology+songs") {
+              $("#header").css("background", "url(assets/images/apology.jpg)")
+              $("#header-text").text("Need to Apologize");
+            }
+            if (chosenPlaylist === "hang+out+playlist") {
+              $("#header").css("background", "url(assets/images/casual.jpg)")
+              $("#header-text").text("Keeping it Casual");
+            } 
+            if (chosenPlaylist === "") {
+              $("#header").css("background", "url(assets/images/casual.jpg)")
+              $("#header-text").text("Enjoy the Mood");
+            }    
+    
     youtubeCall();
   })
 
