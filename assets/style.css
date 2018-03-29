@@ -83,6 +83,10 @@ form {
     color: #ebe1e4;
     font-weight: 300;
 }
+
+.modal input {
+    color: white;
+}
 .modal a {
     color: #d4cdcf;
 }
